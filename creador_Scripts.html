@@ -1060,7 +1060,7 @@ textarea{
 {
    "xid":"DP_{{numeroEstacion}}_MIN_MP10N",
    "name":"{{nombre_corto}}-MP 10 (N)",
-   "enabled":true,
+   "enabled":false,
    "loggingType":"ON_TS_CHANGE",
    "intervalLoggingPeriodType":"MINUTES",
    "intervalLoggingType":"AVERAGE",
@@ -1850,7 +1850,7 @@ textarea{
 {
   "xid":"DP_{{numeroEstacion}}_15_MPTOTALES",
   "name":"MP Totales (15 Min)",
-  "enabled":true,
+  "enabled":false,
   "loggingType":"ON_TS_CHANGE",
   "intervalLoggingPeriodType":"MINUTES",
   "intervalLoggingType":"AVERAGE",
@@ -2810,7 +2810,7 @@ textarea{
 {
   "xid":"DP_{{numeroEstacion}}_HR_MPTOTALES",
   "name":"MP Totales (Hr)",
-  "enabled":true,
+  "enabled":false,
   "loggingType":"ON_TS_CHANGE",
   "intervalLoggingPeriodType":"MINUTES",
   "intervalLoggingType":"AVERAGE",
@@ -3711,6 +3711,120 @@ textarea{
 "tolerance":0.0
 },
 {
+  "xid":"DP_{{numeroEstacion}}_DIA_MP1",
+  "name":"MP 1 (Dia)",
+  "enabled":true,
+  "loggingType":"ON_TS_CHANGE",
+  "intervalLoggingPeriodType":"MINUTES",
+  "intervalLoggingType":"AVERAGE",
+  "purgeType":"YEARS",
+  "pointLocator":{
+  "dataType":"NUMERIC",
+  "collectorType":"HISTORICAL",
+  "arrayIndex":0,
+  "columnName":"PM1_Avg",
+  "historicalRecordStart":0,
+  "loggerAddress":1,
+  "stringLength":1,
+  "tableName":"dias"
+},
+"eventDetectors":[
+],
+"plotType":"SPLINE",
+"rollup":"NONE",
+"unit":"",
+"chartColour":"black",
+"chartRenderer":{
+"type":"IMAGE",
+"timePeriodType":"DAYS",
+"numberOfPeriods":1
+},
+"dataSourceXid":"DS_{{numeroEstacion}}_{{nombre_corto}}",
+"defaultCacheSize":1,
+"deviceName":"EST_{{numeroEstacion}}",
+"discardExtremeValues":false,
+"discardHighLimit":1.7976931348623157E308,
+"discardLowLimit":-1.7976931348623157E308,
+"intervalLoggingPeriod":1,
+"intervalLoggingSampleWindowSize":0,
+"overrideIntervalLoggingSamples":false,
+"preventSetExtremeValues":false,
+"purgeOverride":false,
+"purgePeriod":1,
+"readPermission":"superadmin",
+"setExtremeHighLimit":1.7976931348623157E308,
+"setExtremeLowLimit":-1.7976931348623157E308,
+"setPermission":"",
+"tags":{
+},
+"textRenderer":{
+"type":"ANALOG",
+"useUnitAsSuffix":false,
+"unit":"",
+"renderedUnit":"",
+"suffix":"  µg\/m3",
+"format":"0.00"
+},
+"tolerance":0.0
+},
+{
+  "xid":"DP_{{numeroEstacion}}_DIA_MPTOTALES",
+  "name":"MP Totales (Dia)",
+  "enabled":false,
+  "loggingType":"ON_TS_CHANGE",
+  "intervalLoggingPeriodType":"MINUTES",
+  "intervalLoggingType":"AVERAGE",
+  "purgeType":"YEARS",
+  "pointLocator":{
+  "dataType":"NUMERIC",
+  "collectorType":"HISTORICAL",
+  "arrayIndex":0,
+  "columnName":"PMTotales",
+  "historicalRecordStart":0,
+  "loggerAddress":1,
+  "stringLength":1,
+  "tableName":"dias"
+},
+"eventDetectors":[
+],
+"plotType":"SPLINE",
+"rollup":"NONE",
+"unit":"",
+"chartColour":"black",
+"chartRenderer":{
+"type":"IMAGE",
+"timePeriodType":"DAYS",
+"numberOfPeriods":1
+},
+"dataSourceXid":"DS_{{numeroEstacion}}_{{nombre_corto}}",
+"defaultCacheSize":1,
+"deviceName":"EST_{{numeroEstacion}}",
+"discardExtremeValues":false,
+"discardHighLimit":1.7976931348623157E308,
+"discardLowLimit":-1.7976931348623157E308,
+"intervalLoggingPeriod":1,
+"intervalLoggingSampleWindowSize":0,
+"overrideIntervalLoggingSamples":false,
+"preventSetExtremeValues":false,
+"purgeOverride":false,
+"purgePeriod":1,
+"readPermission":"superadmin",
+"setExtremeHighLimit":1.7976931348623157E308,
+"setExtremeLowLimit":-1.7976931348623157E308,
+"setPermission":"",
+"tags":{
+},
+"textRenderer":{
+"type":"ANALOG",
+"useUnitAsSuffix":false,
+"unit":"",
+"renderedUnit":"",
+"suffix":"  µg\/m3",
+"format":"0.00"
+},
+"tolerance":0.0
+},
+{
    "xid":"DP_{{numeroEstacion}}_DIA_TI",
    "name":"Temperatura Interior (Dia)",
    "enabled":false,
@@ -4484,7 +4598,7 @@ textarea{
 {
   "xid":"DP_{{numeroEstacion}}_P15_PMTOTALES",
   "name":"{{nombre_corto}}-MP Totales",
-  "enabled":true,
+  "enabled":false,
   "loggingType":"ON_TS_CHANGE",
   "intervalLoggingPeriodType":"MINUTES",
   "intervalLoggingType":"AVERAGE",
@@ -5500,7 +5614,7 @@ textarea{
 {
   "xid":"DP_{{numeroEstacion}}_PHR_MPTOTALES",
   "name":"{{nombre_corto}}-MP Totales",
-  "enabled":true,
+  "enabled":false,
   "loggingType":"ON_TS_CHANGE",
   "intervalLoggingPeriodType":"MINUTES",
   "intervalLoggingType":"AVERAGE",
@@ -6516,7 +6630,7 @@ textarea{
 {
   "xid":"DP_{{numeroEstacion}}_PDIA_MPTOTALES",
   "name":"{{nombre_corto}}-MP Totales",
-  "enabled":true,
+  "enabled":false,
   "loggingType":"ON_TS_CHANGE",
   "intervalLoggingPeriodType":"MINUTES",
   "intervalLoggingType":"AVERAGE",
