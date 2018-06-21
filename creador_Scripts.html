@@ -1115,6 +1115,59 @@ textarea{
 "tolerance":0.0
 },
 {
+  "xid":"DP_{{numeroEstacion}}_MIN_RUIDO",
+  "name":"{{nombre_corto}}-Nivel Ruido",
+  "enabled":false,
+  "loggingType":"INTERVAL",
+  "intervalLoggingPeriodType":"MINUTES",
+  "intervalLoggingType":"INSTANT",
+  "purgeType":"YEARS",
+  "pointLocator":{
+     "dataType":"NUMERIC",
+     "collectorType":"HISTORICAL",
+     "arrayIndex":0,
+     "columnName":"ruido",
+     "historicalRecordStart":0,
+     "loggerAddress":1,
+     "stringLength":1,
+     "tableName":"minutos"
+  },
+  "eventDetectors":[
+  ],
+  "plotType":"STEP",
+  "rollup":"NONE",
+  "unit":"dB",
+  "simplifyType":"NONE",
+  "chartColour":"",
+  "chartRenderer":null,
+  "dataSourceXid":"DS_{{numeroEstacion}}_{{nombre_corto}}",
+  "defaultCacheSize":1,
+  "deviceName":"EST_{{numeroEstacion}}",
+  "discardExtremeValues":false,
+  "discardHighLimit":1.7976931348623157E308,
+  "discardLowLimit":-1.7976931348623157E308,
+  "intervalLoggingPeriod":1,
+  "intervalLoggingSampleWindowSize":0,
+  "overrideIntervalLoggingSamples":false,
+  "preventSetExtremeValues":false,
+  "purgeOverride":false,
+  "purgePeriod":1,
+  "readPermission":"",
+  "setExtremeHighLimit":1.7976931348623157E308,
+  "setExtremeLowLimit":-1.7976931348623157E308,
+  "setPermission":"",
+  "tags":{
+  },
+  "textRenderer":{
+     "type":"ANALOG",
+     "useUnitAsSuffix":true,
+     "unit":"dB",
+     "renderedUnit":"dB",
+     "format":"0.0"
+  },
+  "tolerance":0.0
+}
+{
    "xid":"DP_{{numeroEstacion}}_15_WS",
    "name":"WS (15 Min)",
    "enabled":true,
