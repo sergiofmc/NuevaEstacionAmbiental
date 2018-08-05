@@ -3,118 +3,128 @@
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
 
 <style type="text/css">
-h2{
-	text-align: center;
-	font-family: Calibri;
-}
-
-.divTable{
-	display: table;
-	width: 370px;
-	margin: auto;
-	border: 1px solid;
-}
-.divTableRow {
-	display: table-row;
-	height: 30px;
-	vertical-align: middle;
-}
-.divTableHeading {
-	background-color: #EEE;
-	display: table-header-group;
-}
-.divTableCell, .divTableHead {
-	border: 1px solid #999999;
-	display: table-cell;
-	padding: 3px 10px;
-	font-family: Calibri;
-	font-size: 18px;
-	vertical-align: middle;
-}
-.divTableHeading {
-	background-color: #EEE;
-	display: table-header-group;
-	font-weight: bold;
-}
-.divTableFoot {
-	background-color: #EEE;
-	display: table-footer-group;
-	font-weight: bold;
-}
-.divTableBody {
-	display: table-row-group;
-}
-select{
-	width: 154px;
-}
-textarea{
-	display: block;
-	margin-left: auto;
-	margin-right: auto;
-	width: 60%;
-	height: 700px;
-}
-
-@media only screen and (max-width:1366px){
-   textarea{
-      display: block;
-      margin-left: auto;
-      margin-right: auto;
-      width: 60%;
-      height: 400px;
-   }
-}
+    h2 {
+        text-align: center;
+        font-family: Calibri;
+    }
+    
+    .divTable {
+        display: table;
+        width: 370px;
+        margin: auto;
+        border: 1px solid;
+    }
+    
+    .divTableRow {
+        display: table-row;
+        height: 30px;
+        vertical-align: middle;
+    }
+    
+    .divTableHeading {
+        background-color: #EEE;
+        display: table-header-group;
+    }
+    
+    .divTableCell,
+    .divTableHead {
+        border: 1px solid #999999;
+        display: table-cell;
+        padding: 3px 10px;
+        font-family: Calibri;
+        font-size: 18px;
+        vertical-align: middle;
+    }
+    
+    .divTableHeading {
+        background-color: #EEE;
+        display: table-header-group;
+        font-weight: bold;
+    }
+    
+    .divTableFoot {
+        background-color: #EEE;
+        display: table-footer-group;
+        font-weight: bold;
+    }
+    
+    .divTableBody {
+        display: table-row-group;
+    }
+    
+    select {
+        width: 154px;
+    }
+    
+    textarea {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 60%;
+        height: 700px;
+    }
+    
+    @media only screen and (max-width:1366px) {
+        textarea {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 60%;
+            height: 400px;
+        }
+    }
 </style>
 
 <head>
-	<title>Nueva Estación</title>
+    <title>Nueva Estación</title>
 </head>
+
 <body>
-	<h2>Creador de Nueva Estación</h2>
-	<br>
-	<div>
-		<form>
-			<div class="divTable">
-				<div class="divTableBody">
-					<div class="divTableRow">
-						<div class="divTableCell">
-							Plantilla Configuración
-						</div>
-						<div class="divTableCell">
-							<select ng-model="plantilla" ng-options="x for x in plantillas"></select>
-						</div>
-					</div>
-					<div class="divTableRow">
-						<div class="divTableCell">
-							Número de Estación
-						</div>
-						<div class="divTableCell">
-							<input type="text" ng-model="numeroEstacion">
-						</div>
-					</div>
-					<div class="divTableRow">
-						<div class="divTableCell">
-							Nombre Corto
-						</div>
-						<div class="divTableCell">
-							<input type="text" ng-model="nombre_corto">
-						</div>
-					</div>
-					<div class="divTableRow">
-						<div class="divTableCell">
-							IP
-						</div>
-						<div class="divTableCell">
-							<input type="text" ng-model="IP" ng-show="plantilla != 'CR1000'" disabled="true">
-							<input type="text" ng-model="IP" ng-show="plantilla == 'CR1000'" >
-						</div>
-					</div>
-				</div>
-			</div>
-		</form>
-		<br>
-		<div>
-			<textarea disabled ng-if="plantilla == 'CR1000'">
+    <h2>Creador de Nueva Estación</h2>
+    <br>
+    <div>
+        <form>
+            <div class="divTable">
+                <div class="divTableBody">
+                    <div class="divTableRow">
+                        <div class="divTableCell">
+                            Plantilla Configuración
+                        </div>
+                        <div class="divTableCell">
+                            <select ng-model="plantilla" ng-options="x for x in plantillas"></select>
+                        </div>
+                    </div>
+                    <div class="divTableRow">
+                        <div class="divTableCell">
+                            Número de Estación
+                        </div>
+                        <div class="divTableCell">
+                            <input type="text" ng-model="numeroEstacion">
+                        </div>
+                    </div>
+                    <div class="divTableRow">
+                        <div class="divTableCell">
+                            Nombre Corto
+                        </div>
+                        <div class="divTableCell">
+                            <input type="text" ng-model="nombre_corto">
+                        </div>
+                    </div>
+                    <div class="divTableRow">
+                        <div class="divTableCell">
+                            IP
+                        </div>
+                        <div class="divTableCell">
+                            <input type="text" ng-model="IP" ng-show="plantilla != 'CR1000'" disabled="true">
+                            <input type="text" ng-model="IP" ng-show="plantilla == 'CR1000'">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <br>
+        <div>
+            <textarea disabled ng-if="plantilla == 'CR1000'">
 {
  "dataSources":[
  {
@@ -4107,7 +4117,7 @@ textarea{
 }
 </textarea>
 
-<textarea disabled ng-if="plantilla == 'Promedio 15'">
+            <textarea disabled ng-if="plantilla == 'Promedio 15'">
    {
       "dataSources":[
       {
@@ -5123,7 +5133,7 @@ textarea{
 }
 </textarea>
 
-<textarea disabled ng-if="plantilla == 'Promedio Hora'">
+            <textarea disabled ng-if="plantilla == 'Promedio Hora'">
    {
       "dataSources":[
       {
@@ -6140,7 +6150,7 @@ textarea{
 }
 </textarea>
 
-<textarea disabled ng-if="plantilla == 'Promedio Día'">
+            <textarea disabled ng-if="plantilla == 'Promedio Día'">
    {
       "dataSources":[
       {
@@ -7156,20 +7166,185 @@ textarea{
 ]
 }
 </textarea>
-</div>
-</div>
 
-<script>
+            <textarea disabled ng-if="plantilla == 'Jerarquía de puntos'">
+  {
 
- /*Opciones de Scripts*/
+    "pointHierarchy":[
+ 
+       {
+ 
+          "points":[
+ 
+          ],
+ 
+          "name":"Estaciones",
+ 
+          "subfolders":[
+ 
+             {
+ 
+                "points":[
+ 
+                ],
+ 
+                "name":"Estacion {{numeroEstacion}}",
+ 
+                "subfolders":[
+ 
+                   {
+ 
+                      "points":[
+ 
+                         "DP_{{numeroEstacion}}_PDIA_HR",
+ 
+                         "DP_{{numeroEstacion}}_PDIA_MP1",
+ 
+                         "DP_{{numeroEstacion}}_PDIA_MP10",
+ 
+                         "DP_{{numeroEstacion}}_PDIA_MP25",
+ 
+                         "DP_{{numeroEstacion}}_PDIA_MPTOTALES",
+ 
+                         "DP_{{numeroEstacion}}_PDIA_SIG",
+ 
+                         "DP_{{numeroEstacion}}_PDIA_ TA",
+ 
+                         "DP_{{numeroEstacion}}_PDIA_WD",
+ 
+                         "DP_{{numeroEstacion}}_PDIA_WS"
+ 
+                      ],
+ 
+                      "name":"Diario",
+ 
+                      "subfolders":[
+ 
+                      ]
+ 
+                   },
+ 
+                   {
+ 
+                      "points":[
+ 
+                         "DP_{{numeroEstacion}}_PHR_HR",
+ 
+                         "DP_{{numeroEstacion}}_PHR_MP1",
+ 
+                         "DP_{{numeroEstacion}}_PHR_MP10",
+ 
+                         "DP_{{numeroEstacion}}_PHR_MP25",
+ 
+                         "DP_{{numeroEstacion}}_PHR_MPTOTALES",
+ 
+                         "DP_{{numeroEstacion}}_PHR_SIG",
+ 
+                         "DP_{{numeroEstacion}}_PHR_TA",
+ 
+                         "DP_{{numeroEstacion}}_PHR_WD",
+ 
+                         "DP_{{numeroEstacion}}_PHR_WS"
+ 
+                      ],
+ 
+                      "name":"Horario",
+ 
+                      "subfolders":[
+ 
+                      ]
+ 
+                   },
+ 
+                   {
+ 
+                      "points":[
+ 
+                         "DP_{{numeroEstacion}}_MIN_HR",
+ 
+                         "DP_{{numeroEstacion}}_MIN_MP1",
+ 
+                         "DP_{{numeroEstacion}}_MIN_MP10",
+ 
+                         "DP_{{numeroEstacion}}_MIN_MP25",
+ 
+                         "DP_{{numeroEstacion}}_MIN_MPTOTALES",
+ 
+                         "DP_{{numeroEstacion}}_MIN_SIG",
+ 
+                         "DP_{{numeroEstacion}}_MIN_TA",
+ 
+                         "DP_{{numeroEstacion}}_MIN_WD",
+ 
+                         "DP_{{numeroEstacion}}_MIN_WS"
+ 
+                      ],
+ 
+                      "name":"Minuto",
+ 
+                      "subfolders":[
+ 
+                      ]
+ 
+                   },
+ 
+                   {
+ 
+                      "points":[
+ 
+                         "DP_{{numeroEstacion}}_P15_HR",
+ 
+                         "DP_{{numeroEstacion}}_P15_MP1",
+ 
+                         "DP_{{numeroEstacion}}_P15_MP10",
+ 
+                         "DP_{{numeroEstacion}}_P15_MP25",
+ 
+                         "DP_{{numeroEstacion}}_P15_MPTOTALES",
+ 
+                         "DP_{{numeroEstacion}}_P15_SIG",
+ 
+                         "DP_{{numeroEstacion}}_P15_TA",
+ 
+                         "DP_{{numeroEstacion}}_P15_WD",
+ 
+                         "DP_{{numeroEstacion}}_P15_WS"
+ 
+                      ],
+ 
+                      "name":"Quinceminutal",
+ 
+                      "subfolders":[
+ 
+                      ]
+ 
+                   }
+ 
+                ]
+ 
+             }
+          ]
+ 
+       }
+ 
+    ]
+ 
+ }
+</textarea>
+        </div>
+    </div>
 
- /*CR1000*/
- var app = angular.module('myScriptCreator', []);
- app.controller('formCtrl', function($scope) {
-   $scope.plantillas = ["CR1000","Promedio 15","Promedio Hora","Promedio Día"];
-   $scope.plantilla = $scope.plantillas[0];
-});
-</script>
+    <script>
+        /*Opciones de Scripts*/
+
+        /*CR1000*/
+        var app = angular.module('myScriptCreator', []);
+        app.controller('formCtrl', function($scope) {
+            $scope.plantillas = ["CR1000", "Promedio 15", "Promedio Hora", "Promedio Día", "Jerarquía de puntos"];
+            $scope.plantilla = $scope.plantillas[0];
+        });
+    </script>
 
 </body>
+
 </html>
