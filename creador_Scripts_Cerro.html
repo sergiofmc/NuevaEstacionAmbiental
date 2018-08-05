@@ -8773,6 +8773,170 @@
 ]
 }
 </textarea>
+            <textarea disabled ng-if="plantilla == 'Jerarquía de puntos'">
+{
+
+"pointHierarchy":[
+
+{
+
+"points":[
+
+],
+
+"name":"Estaciones",
+
+"subfolders":[
+
+ {
+
+    "points":[
+
+    ],
+
+    "name":"Estacion {{numeroEstacion}}",
+
+    "subfolders":[
+
+       {
+
+          "points":[
+
+             "DP_{{numeroEstacion}}_PDIA_HR",
+
+             "DP_{{numeroEstacion}}_PDIA_MP1",
+
+             "DP_{{numeroEstacion}}_PDIA_MP10",
+
+             "DP_{{numeroEstacion}}_PDIA_MP25",
+
+             "DP_{{numeroEstacion}}_PDIA_MPTOTALES",
+
+             "DP_{{numeroEstacion}}_PDIA_SIG",
+
+             "DP_{{numeroEstacion}}_PDIA_ TA",
+
+             "DP_{{numeroEstacion}}_PDIA_WD",
+
+             "DP_{{numeroEstacion}}_PDIA_WS"
+
+          ],
+
+          "name":"Diario",
+
+          "subfolders":[
+
+          ]
+
+       },
+
+       {
+
+          "points":[
+
+             "DP_{{numeroEstacion}}_PHR_HR",
+
+             "DP_{{numeroEstacion}}_PHR_MP1",
+
+             "DP_{{numeroEstacion}}_PHR_MP10",
+
+             "DP_{{numeroEstacion}}_PHR_MP25",
+
+             "DP_{{numeroEstacion}}_PHR_MPTOTALES",
+
+             "DP_{{numeroEstacion}}_PHR_SIG",
+
+             "DP_{{numeroEstacion}}_PHR_TA",
+
+             "DP_{{numeroEstacion}}_PHR_WD",
+
+             "DP_{{numeroEstacion}}_PHR_WS"
+
+          ],
+
+          "name":"Horario",
+
+          "subfolders":[
+
+          ]
+
+       },
+
+       {
+
+          "points":[
+
+             "DP_{{numeroEstacion}}_MIN_HR",
+
+             "DP_{{numeroEstacion}}_MIN_MP1",
+
+             "DP_{{numeroEstacion}}_MIN_MP10",
+
+             "DP_{{numeroEstacion}}_MIN_MP25",
+
+             "DP_{{numeroEstacion}}_MIN_MPTOTALES",
+
+             "DP_{{numeroEstacion}}_MIN_SIG",
+
+             "DP_{{numeroEstacion}}_MIN_TA",
+
+             "DP_{{numeroEstacion}}_MIN_WD",
+
+             "DP_{{numeroEstacion}}_MIN_WS"
+
+          ],
+
+          "name":"Minuto",
+
+          "subfolders":[
+
+          ]
+
+       },
+
+       {
+
+          "points":[
+
+             "DP_{{numeroEstacion}}_P15_HR",
+
+             "DP_{{numeroEstacion}}_P15_MP1",
+
+             "DP_{{numeroEstacion}}_P15_MP10",
+
+             "DP_{{numeroEstacion}}_P15_MP25",
+
+             "DP_{{numeroEstacion}}_P15_MPTOTALES",
+
+             "DP_{{numeroEstacion}}_P15_SIG",
+
+             "DP_{{numeroEstacion}}_P15_TA",
+
+             "DP_{{numeroEstacion}}_P15_WD",
+
+             "DP_{{numeroEstacion}}_P15_WS"
+
+          ],
+
+          "name":"Quinceminutal",
+
+          "subfolders":[
+
+          ]
+
+       }
+
+    ]
+
+ }
+]
+
+}
+
+]
+
+}
+</textarea>
         </div>
     </div>
 
@@ -8782,7 +8946,7 @@
         /*CR1000*/
         var app = angular.module('myScriptCreator', []);
         app.controller('formCtrl', function($scope) {
-            $scope.plantillas = ["CR1000", "Promedio 15", "Promedio Hora", "Promedio Día"];
+            $scope.plantillas = ["CR1000", "Promedio 15", "Promedio Hora", "Promedio Día", "Jerarquía de puntos"];
             $scope.plantilla = $scope.plantillas[0];
         });
     </script>
