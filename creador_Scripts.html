@@ -104,7 +104,15 @@
                     </div>
                     <div class="divTableRow">
                         <div class="divTableCell">
-                            Nombre Corto
+                            Nombre Estacion
+                        </div>
+                        <div class="divTableCell">
+                            <input type="text" ng-model="nombreEstacion">
+                        </div>
+                    </div>
+                    <div class="divTableRow">
+                        <div class="divTableCell">
+                            Nombre Corto (sin espacios)
                         </div>
                         <div class="divTableCell">
                             <input type="text" ng-model="nombre_corto">
@@ -166,7 +174,7 @@
 "dataPoints":[
    {
    "xid":"DP_{{numeroEstacion}}_MIN_WS",
-   "name":"{{nombre_corto}}-WS",
+   "name":"WS",
    "enabled":true,
    "loggingType":"ON_TS_CHANGE",
    "intervalLoggingPeriodType":"MINUTES",
@@ -222,7 +230,7 @@
 },
 {
    "xid":"DP_{{numeroEstacion}}_MIN_WD",
-   "name":"{{nombre_corto}}-WD",
+   "name":"WD",
    "enabled":true,
    "loggingType":"ON_TS_CHANGE",
    "intervalLoggingPeriodType":"MINUTES",
@@ -278,7 +286,7 @@
 },
 {
    "xid":"DP_{{numeroEstacion}}_MIN_SIG",
-   "name":"{{nombre_corto}}-Sigma",
+   "name":"Sigma",
    "enabled":true,
    "loggingType":"ON_TS_CHANGE",
    "intervalLoggingPeriodType":"MINUTES",
@@ -334,7 +342,7 @@
 },
 {
    "xid":"DP_{{numeroEstacion}}_MIN_TA",
-   "name":"{{nombre_corto}}-Temperatura Ambiental",
+   "name":"Temperatura Ambiental",
    "enabled":true,
    "loggingType":"ON_TS_CHANGE",
    "intervalLoggingPeriodType":"MINUTES",
@@ -390,7 +398,7 @@
 },
 {
    "xid":"DP_{{numeroEstacion}}_MIN_HR",
-   "name":"{{nombre_corto}}-Humedad Relativa",
+   "name":"Humedad Relativa",
    "enabled":true,
    "loggingType":"ON_TS_CHANGE",
    "intervalLoggingPeriodType":"MINUTES",
@@ -446,7 +454,7 @@
 },
 {
    "xid":"DP_{{numeroEstacion}}_MIN_PA",
-   "name":"{{nombre_corto}}-Presión Atmosférica",
+   "name":"Presión Atmosférica",
    "enabled":false,
    "loggingType":"ON_TS_CHANGE",
    "intervalLoggingPeriodType":"MINUTES",
@@ -502,7 +510,7 @@
 },
 {
    "xid":"DP_{{numeroEstacion}}_MIN_RS",
-   "name":"{{nombre_corto}}-Radiación Solar",
+   "name":"Radiación Solar",
    "enabled":false,
    "loggingType":"ON_TS_CHANGE",
    "intervalLoggingPeriodType":"MINUTES",
@@ -559,7 +567,7 @@
 },
 {
    "xid":"DP_{{numeroEstacion}}_MIN_UV",
-   "name":"{{nombre_corto}}-Radiación UV",
+   "name":"Radiación UV",
    "enabled":false,
    "loggingType":"ON_TS_CHANGE",
    "intervalLoggingPeriodType":"MINUTES",
@@ -616,7 +624,7 @@
 },
 {
    "xid":"DP_{{numeroEstacion}}_MIN_AN",
-   "name":"{{nombre_corto}}-Altura Nieve",
+   "name":"Altura Nieve",
    "enabled":false,
    "loggingType":"ON_TS_CHANGE",
    "intervalLoggingPeriodType":"MINUTES",
@@ -672,7 +680,7 @@
 },
 {
    "xid":"DP_{{numeroEstacion}}_MIN_LL",
-   "name":"{{nombre_corto}}-Lluvia Total",
+   "name":"Lluvia Total",
    "enabled":false,
    "loggingType":"ON_TS_CHANGE",
    "intervalLoggingPeriodType":"MINUTES",
@@ -728,7 +736,7 @@
 },
 {
    "xid":"DP_{{numeroEstacion}}_MIN_MP25",
-   "name":"{{nombre_corto}}-MP 2.5",
+   "name":"MP 2.5",
    "enabled":true,
    "loggingType":"ON_TS_CHANGE",
    "intervalLoggingPeriodType":"MINUTES",
@@ -785,7 +793,7 @@
 },
 {
    "xid":"DP_{{numeroEstacion}}_MIN_MP10",
-   "name":"{{nombre_corto}}-MP 10",
+   "name":"MP 10",
    "enabled":true,
    "loggingType":"ON_TS_CHANGE",
    "intervalLoggingPeriodType":"MINUTES",
@@ -842,7 +850,7 @@
 },
 {
   "xid":"DP_{{numeroEstacion}}_MIN_MP1",
-  "name":"{{nombre_corto}}-MP 1",
+  "name":"MP 1",
   "enabled":true,
   "loggingType":"ON_TS_CHANGE",
   "intervalLoggingPeriodType":"MINUTES",
@@ -899,7 +907,7 @@
 },
 {
   "xid":"DP_{{numeroEstacion}}_MIN_MPTOTALES",
-  "name":"{{nombre_corto}}-MP Totales",
+  "name":"MP Totales",
   "enabled":true,
   "loggingType":"ON_TS_CHANGE",
   "intervalLoggingPeriodType":"MINUTES",
@@ -956,7 +964,7 @@
 },
 {
    "xid":"DP_{{numeroEstacion}}_MIN_TI",
-   "name":"{{nombre_corto}}-Temperatura Interior",
+   "name":"Temperatura Interior",
    "enabled":false,
    "loggingType":"ON_TS_CHANGE",
    "intervalLoggingPeriodType":"MINUTES",
@@ -1012,7 +1020,7 @@
 },
 {
    "xid":"DP_{{numeroEstacion}}_MIN_MP25N",
-   "name":"{{nombre_corto}}-MP 2.5 (N)",
+   "name":"MP 2.5 (N)",
    "enabled":false,
    "loggingType":"ON_TS_CHANGE",
    "intervalLoggingPeriodType":"MINUTES",
@@ -1069,7 +1077,7 @@
 },
 {
    "xid":"DP_{{numeroEstacion}}_MIN_MP10N",
-   "name":"{{nombre_corto}}-MP 10 (N)",
+   "name":"MP 10 (N)",
    "enabled":false,
    "loggingType":"ON_TS_CHANGE",
    "intervalLoggingPeriodType":"MINUTES",
@@ -1126,7 +1134,7 @@
 },
 {
   "xid":"DP_{{numeroEstacion}}_MIN_RUIDO",
-  "name":"{{nombre_corto}}-Nivel Ruido",
+  {{numeroEstacion}}Nivel Ruido",
   "enabled":false,
   "loggingType":"INTERVAL",
   "intervalLoggingPeriodType":"MINUTES",
@@ -4122,7 +4130,7 @@
       "dataSources":[
       {
         "xid":"DS_{{numeroEstacion}}_PROM_15",
-        "name":"{{nombre_corto}}-Promedio 15",
+        "name":"{{nombreEstacion}} - Promedio 15",
         "enabled":true,
         "type":"SCRIPTING",
         "alarmLevels":{
@@ -4239,7 +4247,7 @@
 "dataPoints":[
 {
    "xid":"DP_{{numeroEstacion}}_P15_AN",
-   "name":"{{nombre_corto}}-Altura Nieve",
+   {{numeroEstacion}}Altura Nieve",
    "enabled":false,
    "loggingType":"ON_TS_CHANGE",
    "intervalLoggingPeriodType":"MINUTES",
@@ -4264,7 +4272,7 @@
 },
 "dataSourceXid":"DS_{{numeroEstacion}}_PROM_15",
 "defaultCacheSize":1,
-"deviceName":"{{nombre_corto}}-Promedio 15",
+"deviceName":"{{nombreEstacion}} - Promedio 15",
 "discardExtremeValues":false,
 "discardHighLimit":1.7976931348623157E308,
 "discardLowLimit":-1.7976931348623157E308,
@@ -4291,7 +4299,7 @@
 },
 {
    "xid":"DP_{{numeroEstacion}}_P15_HR",
-   "name":"{{nombre_corto}}-Humedad Relativa",
+   {{numeroEstacion}}Humedad Relativa",
    "enabled":true,
    "loggingType":"ON_TS_CHANGE",
    "intervalLoggingPeriodType":"MINUTES",
@@ -4316,7 +4324,7 @@
 },
 "dataSourceXid":"DS_{{numeroEstacion}}_PROM_15",
 "defaultCacheSize":1,
-"deviceName":"{{nombre_corto}}-Promedio 15",
+"deviceName":"{{nombreEstacion}} - Promedio 15",
 "discardExtremeValues":false,
 "discardHighLimit":1.7976931348623157E308,
 "discardLowLimit":-1.7976931348623157E308,
@@ -4343,7 +4351,7 @@
 },
 {
    "xid":"DP_{{numeroEstacion}}_P15_LL",
-   "name":"{{nombre_corto}}-Lluvia Total",
+   {{numeroEstacion}}Lluvia Total",
    "enabled":false,
    "loggingType":"ON_TS_CHANGE",
    "intervalLoggingPeriodType":"MINUTES",
@@ -4368,7 +4376,7 @@
 },
 "dataSourceXid":"DS_{{numeroEstacion}}_PROM_15",
 "defaultCacheSize":1,
-"deviceName":"{{nombre_corto}}-Promedio 15",
+"deviceName":"{{nombreEstacion}} - Promedio 15",
 "discardExtremeValues":false,
 "discardHighLimit":1.7976931348623157E308,
 "discardLowLimit":-1.7976931348623157E308,
@@ -4395,7 +4403,7 @@
 },
 {
    "xid":"DP_{{numeroEstacion}}_P15_MP10",
-   "name":"{{nombre_corto}}-MP 10",
+   {{numeroEstacion}}MP 10",
    "enabled":true,
    "loggingType":"ON_TS_CHANGE",
    "intervalLoggingPeriodType":"MINUTES",
@@ -4420,7 +4428,7 @@
 },
 "dataSourceXid":"DS_{{numeroEstacion}}_PROM_15",
 "defaultCacheSize":1,
-"deviceName":"{{nombre_corto}}-Promedio 15",
+"deviceName":"{{nombreEstacion}} - Promedio 15",
 "discardExtremeValues":false,
 "discardHighLimit":1.7976931348623157E308,
 "discardLowLimit":-1.7976931348623157E308,
@@ -4448,7 +4456,7 @@
 },
 {
    "xid":"DP_{{numeroEstacion}}_P15_MP10N",
-   "name":"{{nombre_corto}}-MP 10 (N)",
+   {{numeroEstacion}}MP 10 (N)",
    "enabled":false,
    "loggingType":"ON_TS_CHANGE",
    "intervalLoggingPeriodType":"MINUTES",
@@ -4473,7 +4481,7 @@
 },
 "dataSourceXid":"DS_{{numeroEstacion}}_PROM_15",
 "defaultCacheSize":1,
-"deviceName":"{{nombre_corto}}-Promedio 15",
+"deviceName":"{{nombreEstacion}} - Promedio 15",
 "discardExtremeValues":false,
 "discardHighLimit":1.7976931348623157E308,
 "discardLowLimit":-1.7976931348623157E308,
@@ -4501,7 +4509,7 @@
 },
 {
    "xid":"DP_{{numeroEstacion}}_P15_MP25",
-   "name":"{{nombre_corto}}-MP 2.5",
+   {{numeroEstacion}}MP 2.5",
    "enabled":true,
    "loggingType":"ON_TS_CHANGE",
    "intervalLoggingPeriodType":"MINUTES",
@@ -4526,7 +4534,7 @@
 },
 "dataSourceXid":"DS_{{numeroEstacion}}_PROM_15",
 "defaultCacheSize":1,
-"deviceName":"{{nombre_corto}}-Promedio 15",
+"deviceName":"{{nombreEstacion}} - Promedio 15",
 "discardExtremeValues":false,
 "discardHighLimit":1.7976931348623157E308,
 "discardLowLimit":-1.7976931348623157E308,
@@ -4554,7 +4562,7 @@
 },
 {
    "xid":"DP_{{numeroEstacion}}_P15_MP25N",
-   "name":"{{nombre_corto}}-MP 2.5 (N)",
+   {{numeroEstacion}}MP 2.5 (N)",
    "enabled":false,
    "loggingType":"ON_TS_CHANGE",
    "intervalLoggingPeriodType":"MINUTES",
@@ -4579,7 +4587,7 @@
 },
 "dataSourceXid":"DS_{{numeroEstacion}}_PROM_15",
 "defaultCacheSize":1,
-"deviceName":"{{nombre_corto}}-Promedio 15",
+"deviceName":"{{nombreEstacion}} - Promedio 15",
 "discardExtremeValues":false,
 "discardHighLimit":1.7976931348623157E308,
 "discardLowLimit":-1.7976931348623157E308,
@@ -4607,7 +4615,7 @@
 },
 {
   "xid":"DP_{{numeroEstacion}}_P15_MP1",
-  "name":"{{nombre_corto}}-MP 1",
+  {{numeroEstacion}}MP 1",
   "enabled":true,
   "loggingType":"ON_TS_CHANGE",
   "intervalLoggingPeriodType":"MINUTES",
@@ -4632,7 +4640,7 @@
 },
 "dataSourceXid":"DS_{{numeroEstacion}}_PROM_15",
 "defaultCacheSize":1,
-"deviceName":"{{nombre_corto}}-Promedio 15",
+"deviceName":"{{nombreEstacion}} - Promedio 15",
 "discardExtremeValues":false,
 "discardHighLimit":1.7976931348623157E308,
 "discardLowLimit":-1.7976931348623157E308,
@@ -4660,7 +4668,7 @@
 },
 {
   "xid":"DP_{{numeroEstacion}}_P15_MPTOTALES",
-  "name":"{{nombre_corto}}-MP Totales",
+  {{numeroEstacion}}MP Totales",
   "enabled":true,
   "loggingType":"ON_TS_CHANGE",
   "intervalLoggingPeriodType":"MINUTES",
@@ -4685,7 +4693,7 @@
 },
 "dataSourceXid":"DS_{{numeroEstacion}}_PROM_15",
 "defaultCacheSize":1,
-"deviceName":"{{nombre_corto}}-Promedio 15",
+"deviceName":"{{nombreEstacion}} - Promedio 15",
 "discardExtremeValues":false,
 "discardHighLimit":1.7976931348623157E308,
 "discardLowLimit":-1.7976931348623157E308,
@@ -4713,7 +4721,7 @@
 },
 {
    "xid":"DP_{{numeroEstacion}}_P15_PA",
-   "name":"{{nombre_corto}}-Presión Atmosférica",
+   {{numeroEstacion}}Presión Atmosférica",
    "enabled":false,
    "loggingType":"ON_TS_CHANGE",
    "intervalLoggingPeriodType":"MINUTES",
@@ -4738,7 +4746,7 @@
 },
 "dataSourceXid":"DS_{{numeroEstacion}}_PROM_15",
 "defaultCacheSize":1,
-"deviceName":"{{nombre_corto}}-Promedio 15",
+"deviceName":"{{nombreEstacion}} - Promedio 15",
 "discardExtremeValues":false,
 "discardHighLimit":1.7976931348623157E308,
 "discardLowLimit":-1.7976931348623157E308,
@@ -4765,7 +4773,7 @@
 },
 {
    "xid":"DP_{{numeroEstacion}}_P15_RS",
-   "name":"{{nombre_corto}}-Radiación Solar",
+   {{numeroEstacion}}Radiación Solar",
    "enabled":false,
    "loggingType":"ON_TS_CHANGE",
    "intervalLoggingPeriodType":"MINUTES",
@@ -4790,7 +4798,7 @@
 },
 "dataSourceXid":"DS_{{numeroEstacion}}_PROM_15",
 "defaultCacheSize":1,
-"deviceName":"{{nombre_corto}}-Promedio 15",
+"deviceName":"{{nombreEstacion}} - Promedio 15",
 "discardExtremeValues":false,
 "discardHighLimit":1.7976931348623157E308,
 "discardLowLimit":-1.7976931348623157E308,
@@ -4818,7 +4826,7 @@
 },
 {
    "xid":"DP_{{numeroEstacion}}_P15_UV",
-   "name":"{{nombre_corto}}-Radiación UV",
+   {{numeroEstacion}}Radiación UV",
    "enabled":false,
    "loggingType":"ON_TS_CHANGE",
    "intervalLoggingPeriodType":"MINUTES",
@@ -4843,7 +4851,7 @@
 },
 "dataSourceXid":"DS_{{numeroEstacion}}_PROM_15",
 "defaultCacheSize":1,
-"deviceName":"{{nombre_corto}}-Promedio 15",
+"deviceName":"{{nombreEstacion}} - Promedio 15",
 "discardExtremeValues":false,
 "discardHighLimit":1.7976931348623157E308,
 "discardLowLimit":-1.7976931348623157E308,
@@ -4871,7 +4879,7 @@
 },
 {
    "xid":"DP_{{numeroEstacion}}_P15_SIG",
-   "name":"{{nombre_corto}}-Sigma",
+   {{numeroEstacion}}Sigma",
    "enabled":true,
    "loggingType":"ON_TS_CHANGE",
    "intervalLoggingPeriodType":"MINUTES",
@@ -4896,7 +4904,7 @@
 },
 "dataSourceXid":"DS_{{numeroEstacion}}_PROM_15",
 "defaultCacheSize":1,
-"deviceName":"{{nombre_corto}}-Promedio 15",
+"deviceName":"{{nombreEstacion}} - Promedio 15",
 "discardExtremeValues":false,
 "discardHighLimit":1.7976931348623157E308,
 "discardLowLimit":-1.7976931348623157E308,
@@ -4923,7 +4931,7 @@
 },
 {
    "xid":"DP_{{numeroEstacion}}_P15_TA",
-   "name":"{{nombre_corto}}-Temperatura Ambiental",
+   {{numeroEstacion}}Temperatura Ambiental",
    "enabled":true,
    "loggingType":"ON_TS_CHANGE",
    "intervalLoggingPeriodType":"MINUTES",
@@ -4948,7 +4956,7 @@
 },
 "dataSourceXid":"DS_{{numeroEstacion}}_PROM_15",
 "defaultCacheSize":1,
-"deviceName":"{{nombre_corto}}-Promedio 15",
+"deviceName":"{{nombreEstacion}} - Promedio 15",
 "discardExtremeValues":false,
 "discardHighLimit":1.7976931348623157E308,
 "discardLowLimit":-1.7976931348623157E308,
@@ -4975,7 +4983,7 @@
 },
 {
    "xid":"DP_{{numeroEstacion}}_P15_TI",
-   "name":"{{nombre_corto}}-Temperatura Interior",
+   {{numeroEstacion}}Temperatura Interior",
    "enabled":false,
    "loggingType":"ON_TS_CHANGE",
    "intervalLoggingPeriodType":"MINUTES",
@@ -5000,7 +5008,7 @@
 },
 "dataSourceXid":"DS_{{numeroEstacion}}_PROM_15",
 "defaultCacheSize":1,
-"deviceName":"{{nombre_corto}}-Promedio 15",
+"deviceName":"{{nombreEstacion}} - Promedio 15",
 "discardExtremeValues":false,
 "discardHighLimit":1.7976931348623157E308,
 "discardLowLimit":-1.7976931348623157E308,
@@ -5027,7 +5035,7 @@
 },
 {
    "xid":"DP_{{numeroEstacion}}_P15_WD",
-   "name":"{{nombre_corto}}-WD",
+   {{numeroEstacion}}WD",
    "enabled":true,
    "loggingType":"ON_TS_CHANGE",
    "intervalLoggingPeriodType":"MINUTES",
@@ -5052,7 +5060,7 @@
 },
 "dataSourceXid":"DS_{{numeroEstacion}}_PROM_15",
 "defaultCacheSize":1,
-"deviceName":"{{nombre_corto}}-Promedio 15",
+"deviceName":"{{nombreEstacion}} - Promedio 15",
 "discardExtremeValues":false,
 "discardHighLimit":1.7976931348623157E308,
 "discardLowLimit":-1.7976931348623157E308,
@@ -5079,7 +5087,7 @@
 },
 {
    "xid":"DP_{{numeroEstacion}}_P15_WS",
-   "name":"{{nombre_corto}}-WS",
+   {{numeroEstacion}}WS",
    "enabled":true,
    "loggingType":"ON_TS_CHANGE",
    "intervalLoggingPeriodType":"MINUTES",
@@ -5104,7 +5112,7 @@
 },
 "dataSourceXid":"DS_{{numeroEstacion}}_PROM_15",
 "defaultCacheSize":1,
-"deviceName":"{{nombre_corto}}-Promedio 15",
+"deviceName":"{{nombreEstacion}} - Promedio 15",
 "discardExtremeValues":false,
 "discardHighLimit":1.7976931348623157E308,
 "discardLowLimit":-1.7976931348623157E308,
@@ -5138,7 +5146,7 @@
       "dataSources":[
       {
         "xid":"DS_{{numeroEstacion}}_PROM_HR",
-        "name":"{{nombre_corto}}-Promedio Horario",
+        "name":"{{nombreEstacion}} - Promedio Horario",
         "enabled":true,
         "type":"SCRIPTING",
         "alarmLevels":{
@@ -5256,7 +5264,7 @@
 "dataPoints":[
 {
    "xid":"DP_{{numeroEstacion}}_PHR_AN",
-   "name":"{{nombre_corto}}-Altura Nieve",
+   {{numeroEstacion}}Altura Nieve",
    "enabled":false,
    "loggingType":"ON_TS_CHANGE",
    "intervalLoggingPeriodType":"MINUTES",
@@ -5308,7 +5316,7 @@
 },
 {
    "xid":"DP_{{numeroEstacion}}_PHR_HR",
-   "name":"{{nombre_corto}}-Humedad Relativa",
+   {{numeroEstacion}}Humedad Relativa",
    "enabled":true,
    "loggingType":"ON_TS_CHANGE",
    "intervalLoggingPeriodType":"MINUTES",
@@ -5360,7 +5368,7 @@
 },
 {
    "xid":"DP_{{numeroEstacion}}_PHR_LL",
-   "name":"{{nombre_corto}}-Lluvia Total",
+   {{numeroEstacion}}Lluvia Total",
    "enabled":false,
    "loggingType":"ON_TS_CHANGE",
    "intervalLoggingPeriodType":"MINUTES",
@@ -5412,7 +5420,7 @@
 },
 {
    "xid":"DP_{{numeroEstacion}}_PHR_MP10",
-   "name":"{{nombre_corto}}-MP 10",
+   {{numeroEstacion}}MP 10",
    "enabled":true,
    "loggingType":"ON_TS_CHANGE",
    "intervalLoggingPeriodType":"MINUTES",
@@ -5465,7 +5473,7 @@
 },
 {
    "xid":"DP_{{numeroEstacion}}_PHR_MP10N",
-   "name":"{{nombre_corto}}-MP 10 (N)",
+   {{numeroEstacion}}MP 10 (N)",
    "enabled":false,
    "loggingType":"ON_TS_CHANGE",
    "intervalLoggingPeriodType":"MINUTES",
@@ -5518,7 +5526,7 @@
 },
 {
    "xid":"DP_{{numeroEstacion}}_PHR_MP25",
-   "name":"{{nombre_corto}}-MP 2.5",
+   {{numeroEstacion}}MP 2.5",
    "enabled":true,
    "loggingType":"ON_TS_CHANGE",
    "intervalLoggingPeriodType":"MINUTES",
@@ -5571,7 +5579,7 @@
 },
 {
    "xid":"DP_{{numeroEstacion}}_PHR_MP25N",
-   "name":"{{nombre_corto}}-MP 2.5 (N)",
+   {{numeroEstacion}}MP 2.5 (N)",
    "enabled":false,
    "loggingType":"ON_TS_CHANGE",
    "intervalLoggingPeriodType":"MINUTES",
@@ -5624,7 +5632,7 @@
 },
 {
   "xid":"DP_{{numeroEstacion}}_PHR_MP1",
-  "name":"{{nombre_corto}}-MP 1",
+  {{numeroEstacion}}MP 1",
   "enabled":true,
   "loggingType":"ON_TS_CHANGE",
   "intervalLoggingPeriodType":"MINUTES",
@@ -5677,7 +5685,7 @@
 },
 {
   "xid":"DP_{{numeroEstacion}}_PHR_MPTOTALES",
-  "name":"{{nombre_corto}}-MP Totales",
+  {{numeroEstacion}}MP Totales",
   "enabled":true,
   "loggingType":"ON_TS_CHANGE",
   "intervalLoggingPeriodType":"MINUTES",
@@ -5730,7 +5738,7 @@
 },
 {
    "xid":"DP_{{numeroEstacion}}_PHR_PA",
-   "name":"{{nombre_corto}}-Presión Atmosférica",
+   {{numeroEstacion}}Presión Atmosférica",
    "enabled":false,
    "loggingType":"ON_TS_CHANGE",
    "intervalLoggingPeriodType":"MINUTES",
@@ -5782,7 +5790,7 @@
 },
 {
    "xid":"DP_{{numeroEstacion}}_PHR_RS",
-   "name":"{{nombre_corto}}-Radiación Solar",
+   {{numeroEstacion}}Radiación Solar",
    "enabled":false,
    "loggingType":"ON_TS_CHANGE",
    "intervalLoggingPeriodType":"MINUTES",
@@ -5835,7 +5843,7 @@
 },
 {
    "xid":"DP_{{numeroEstacion}}_PHR_UV",
-   "name":"{{nombre_corto}}-Radiación UV",
+   {{numeroEstacion}}Radiación UV",
    "enabled":false,
    "loggingType":"ON_TS_CHANGE",
    "intervalLoggingPeriodType":"MINUTES",
@@ -5888,7 +5896,7 @@
 },
 {
    "xid":"DP_{{numeroEstacion}}_PHR_SIG",
-   "name":"{{nombre_corto}}-Sigma",
+   {{numeroEstacion}}Sigma",
    "enabled":true,
    "loggingType":"ON_TS_CHANGE",
    "intervalLoggingPeriodType":"MINUTES",
@@ -5940,7 +5948,7 @@
 },
 {
    "xid":"DP_{{numeroEstacion}}_PHR_TA",
-   "name":"{{nombre_corto}}-Temperatura Ambiental",
+   {{numeroEstacion}}Temperatura Ambiental",
    "enabled":true,
    "loggingType":"ON_TS_CHANGE",
    "intervalLoggingPeriodType":"MINUTES",
@@ -5992,7 +6000,7 @@
 },
 {
    "xid":"DP_{{numeroEstacion}}_PHR_TI",
-   "name":"{{nombre_corto}}-Temperatura Interior",
+   {{numeroEstacion}}Temperatura Interior",
    "enabled":false,
    "loggingType":"ON_TS_CHANGE",
    "intervalLoggingPeriodType":"MINUTES",
@@ -6044,7 +6052,7 @@
 },
 {
    "xid":"DP_{{numeroEstacion}}_PHR_WD",
-   "name":"{{nombre_corto}}-WD",
+   {{numeroEstacion}}WD",
    "enabled":true,
    "loggingType":"ON_TS_CHANGE",
    "intervalLoggingPeriodType":"MINUTES",
@@ -6096,7 +6104,7 @@
 },
 {
    "xid":"DP_{{numeroEstacion}}_PHR_WS",
-   "name":"{{nombre_corto}}-WS",
+   {{numeroEstacion}}WS",
    "enabled":true,
    "loggingType":"ON_TS_CHANGE",
    "intervalLoggingPeriodType":"MINUTES",
@@ -6155,7 +6163,7 @@
       "dataSources":[
       {
         "xid":"DS_{{numeroEstacion}}_PROM_DIA",
-        "name":"{{nombre_corto}}-Promedio Diario",
+        "name":"{{nombreEstacion}} - Promedio Diario",
         "enabled":true,
         "type":"SCRIPTING",
         "alarmLevels":{
@@ -6273,7 +6281,7 @@
 "dataPoints":[
 {
    "xid":"DP_{{numeroEstacion}}_PDIA_AN",
-   "name":"{{nombre_corto}}-Altura Nieve",
+   {{numeroEstacion}}Altura Nieve",
    "enabled":false,
    "loggingType":"ON_TS_CHANGE",
    "intervalLoggingPeriodType":"MINUTES",
@@ -6325,7 +6333,7 @@
 },
 {
    "xid":"DP_{{numeroEstacion}}_PDIA_HR",
-   "name":"{{nombre_corto}}-Humedad Relativa",
+   {{numeroEstacion}}Humedad Relativa",
    "enabled":true,
    "loggingType":"ON_TS_CHANGE",
    "intervalLoggingPeriodType":"MINUTES",
@@ -6377,7 +6385,7 @@
 },
 {
    "xid":"DP_{{numeroEstacion}}_PDIA_LL",
-   "name":"{{nombre_corto}}-Lluvia Total",
+   {{numeroEstacion}}Lluvia Total",
    "enabled":false,
    "loggingType":"ON_TS_CHANGE",
    "intervalLoggingPeriodType":"MINUTES",
@@ -6429,7 +6437,7 @@
 },
 {
    "xid":"DP_{{numeroEstacion}}_PDIA_MP10",
-   "name":"{{nombre_corto}}-MP 10",
+   {{numeroEstacion}}MP 10",
    "enabled":true,
    "loggingType":"ON_TS_CHANGE",
    "intervalLoggingPeriodType":"MINUTES",
@@ -6482,7 +6490,7 @@
 },
 {
    "xid":"DP_{{numeroEstacion}}_PDIA_MP10N",
-   "name":"{{nombre_corto}}-MP 10 (N)",
+   {{numeroEstacion}}MP 10 (N)",
    "enabled":false,
    "loggingType":"ON_TS_CHANGE",
    "intervalLoggingPeriodType":"MINUTES",
@@ -6535,7 +6543,7 @@
 },
 {
    "xid":"DP_{{numeroEstacion}}_PDIA_MP25",
-   "name":"{{nombre_corto}}-MP 2.5",
+   {{numeroEstacion}}MP 2.5",
    "enabled":true,
    "loggingType":"ON_TS_CHANGE",
    "intervalLoggingPeriodType":"MINUTES",
@@ -6588,7 +6596,7 @@
 },
 {
    "xid":"DP_{{numeroEstacion}}_PDIA_MP25N",
-   "name":"{{nombre_corto}}-MP 2.5 (N)",
+   {{numeroEstacion}}MP 2.5 (N)",
    "enabled":false,
    "loggingType":"ON_TS_CHANGE",
    "intervalLoggingPeriodType":"MINUTES",
@@ -6641,7 +6649,7 @@
 },
 {
   "xid":"DP_{{numeroEstacion}}_PDIA_MP1",
-  "name":"{{nombre_corto}}-MP 1",
+  {{numeroEstacion}}MP 1",
   "enabled":true,
   "loggingType":"ON_TS_CHANGE",
   "intervalLoggingPeriodType":"MINUTES",
@@ -6694,7 +6702,7 @@
 },
 {
   "xid":"DP_{{numeroEstacion}}_PDIA_MPTOTALES",
-  "name":"{{nombre_corto}}-MP Totales",
+  {{numeroEstacion}}MP Totales",
   "enabled":true,
   "loggingType":"ON_TS_CHANGE",
   "intervalLoggingPeriodType":"MINUTES",
@@ -6747,7 +6755,7 @@
 },
 {
    "xid":"DP_{{numeroEstacion}}_PDIA_PA",
-   "name":"{{nombre_corto}}-Presión Atmosférica",
+   {{numeroEstacion}}Presión Atmosférica",
    "enabled":false,
    "loggingType":"ON_TS_CHANGE",
    "intervalLoggingPeriodType":"MINUTES",
@@ -6799,7 +6807,7 @@
 },
 {
    "xid":"DP_{{numeroEstacion}}_PDIA_RS",
-   "name":"{{nombre_corto}}-Radiación Solar",
+   {{numeroEstacion}}Radiación Solar",
    "enabled":false,
    "loggingType":"ON_TS_CHANGE",
    "intervalLoggingPeriodType":"MINUTES",
@@ -6852,7 +6860,7 @@
 },
 {
    "xid":"DP_{{numeroEstacion}}_PDIA_UV",
-   "name":"{{nombre_corto}}-Radiación UV",
+   {{numeroEstacion}}Radiación UV",
    "enabled":false,
    "loggingType":"ON_TS_CHANGE",
    "intervalLoggingPeriodType":"MINUTES",
@@ -6905,7 +6913,7 @@
 },
 {
    "xid":"DP_{{numeroEstacion}}_PDIA_SIG",
-   "name":"{{nombre_corto}}-Sigma",
+   {{numeroEstacion}}Sigma",
    "enabled":true,
    "loggingType":"ON_TS_CHANGE",
    "intervalLoggingPeriodType":"MINUTES",
@@ -6957,7 +6965,7 @@
 },
 {
    "xid":"DP_{{numeroEstacion}}_PDIA_ TA",
-   "name":"{{nombre_corto}}-Temperatura Ambiental",
+   {{numeroEstacion}}Temperatura Ambiental",
    "enabled":true,
    "loggingType":"ON_TS_CHANGE",
    "intervalLoggingPeriodType":"MINUTES",
@@ -7009,7 +7017,7 @@
 },
 {
    "xid":"DP_{{numeroEstacion}}_PDIA_TI",
-   "name":"{{nombre_corto}}-Temperatura Interior",
+   {{numeroEstacion}}Temperatura Interior",
    "enabled":false,
    "loggingType":"ON_TS_CHANGE",
    "intervalLoggingPeriodType":"MINUTES",
@@ -7061,7 +7069,7 @@
 },
 {
    "xid":"DP_{{numeroEstacion}}_PDIA_WD",
-   "name":"{{nombre_corto}}-WD",
+   {{numeroEstacion}}WD",
    "enabled":true,
    "loggingType":"ON_TS_CHANGE",
    "intervalLoggingPeriodType":"MINUTES",
@@ -7113,7 +7121,7 @@
 },
 {
    "xid":"DP_{{numeroEstacion}}_PDIA_WS",
-   "name":"{{nombre_corto}}-WS",
+   {{numeroEstacion}}WS",
    "enabled":true,
    "loggingType":"ON_TS_CHANGE",
    "intervalLoggingPeriodType":"MINUTES",
