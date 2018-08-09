@@ -1,1263 +1,311 @@
-{
-   "dataSources":[
-      {
-         "xid":"DS_numeroEstacion_PROM_15",
-         "name":"nombreEstacion - Promedio 15",
-         "enabled":false,
-         "type":"SCRIPTING",
-         "alarmLevels":{
-            "SCRIPT_ERROR":"URGENT",
-            "DATA_TYPE_ERROR":"URGENT",
-            "POLL_ABORTED":"URGENT",
-            "LOG_ERROR":"URGENT"
-         },
-         "purgeType":"YEARS",
-         "updateEvent":"CONTEXT_UPDATE",
-         "context":[
-            {
-               "varName":"NIEVE",
-               "dataPointXid":"DP_numeroEstacion_15_AN",
-               "updateContext":false
-            },
-            {
-               "varName":"RH",
-               "dataPointXid":"DP_numeroEstacion_15_HR",
-               "updateContext":false
-            },
-            {
-               "varName":"LLUVIA",
-               "dataPointXid":"DP_numeroEstacion_15_LL",
-               "updateContext":false
-            },
-            {
-               "varName":"MP10",
-               "dataPointXid":"DP_numeroEstacion_15_MP10",
-               "updateContext":false
-            },
-            {
-               "varName":"MP10N",
-               "dataPointXid":"DP_numeroEstacion_15_MP10N",
-               "updateContext":false
-            },
-            {
-               "varName":"MP25",
-               "dataPointXid":"DP_numeroEstacion_15_MP25",
-               "updateContext":false
-            },
-            {
-               "varName":"MP25N",
-               "dataPointXid":"DP_numeroEstacion_15_MP25N",
-               "updateContext":false
-            },
-            {
-               "varName":"MP1",
-               "dataPointXid":"DP_numeroEstacion_15_MP1",
-               "updateContext":false
-            },
-            {
-               "varName":"MPTOTALES",
-               "dataPointXid":"DP_numeroEstacion_15_MPTOTALES",
-               "updateContext":false
-            },
-            {
-               "varName":"PRESION",
-               "dataPointXid":"DP_numeroEstacion_15_PA",
-               "updateContext":false
-            },
-            {
-               "varName":"RSOLAR",
-               "dataPointXid":"DP_numeroEstacion_15_RS",
-               "updateContext":false
-            },
-            {
-               "varName":"UV",
-               "dataPointXid":"DP_numeroEstacion_15_UV",
-               "updateContext":false
-            },
-            {
-               "varName":"SIGMA",
-               "dataPointXid":"DP_numeroEstacion_15_SIG",
-               "updateContext":false
-            },
-            {
-               "varName":"TA",
-               "dataPointXid":"DP_numeroEstacion_15_TA",
-               "updateContext":false
-            },
-            {
-               "varName":"TI",
-               "dataPointXid":"DP_numeroEstacion_15_TI",
-               "updateContext":false
-            },
-            {
-               "varName":"WD",
-               "dataPointXid":"DP_numeroEstacion_15_WD",
-               "updateContext":false
-            },
-            {
-               "varName":"WS",
-               "dataPointXid":"DP_numeroEstacion_15_WS",
-               "updateContext":false
-            },
-	    {
-               "varName":"UVA",
-               "dataPointXid":"DP_numeroEstacion_15_UVA",
-               "updateContext":false
-            },
-            {
-               "varName":"UVB",
-               "dataPointXid":"DP_numeroEstacion_15_UVB",
-               "updateContext":false
-            },
-            {
-               "varName":"EVAP",
-               "dataPointXid":"DP_numeroEstacion_15_EVAP",
-               "updateContext":false
-            },
-            {
-               "varName":"MPCO",
-               "dataPointXid":"DP_numeroEstacion_15_MPCO",
-               "updateContext":false
+var correrPromedio = false;
+var desfase = 15;
+if (correrPromedio) desfase = desfase * 2;
+
+var valorCR = {};
+valorCR.WS = WS.value;
+valorCR.WD = WD.value;
+valorCR.MP25 = MP25.value;
+valorCR.MP10 = MP10.value;
+//valorCR.MP1         = MP1.value;
+//valorCR.MPTOTALES   = MPTOTALES.value;
+valorCR.TA = TA.value;
+valorCR.RH = RH.value;
+valorCR.SIGMA = SIGMA.value;
+valorCR.NIEVE = NIEVE.value;
+valorCR.LLUVIA = LLUVIA.value;
+//valorCR.MP10N       = MP10N.value;
+//valorCR.MP25N       = MP25N.value;
+valorCR.UV = UV.value;
+//valorCR.UVA         = UVA.value;
+valorCR.UVB = UVB.value;
+valorCR.EVAP = EVAP.value;
+valorCR.MPCO = MPCO.value;
+valorCR.RSOLAR = RSOLAR.value;
+valorCR.TI = TI.value;
+valorCR.PRESION = PRESION.value;
+
+var tiempoCR = {};
+tiempoCR.WS = WS.time;
+tiempoCR.WD = WD.time;
+tiempoCR.MP25 = MP25.time;
+tiempoCR.MP10 = MP10.time;
+//tiempoCR.MP1         = MP1.time;
+//tiempoCR.MPTOTALES   = MPTOTALES.time;
+tiempoCR.TA = TA.time;
+tiempoCR.RH = RH.time;
+tiempoCR.SIGMA = SIGMA.time;
+tiempoCR.NIEVE = NIEVE.time;
+tiempoCR.LLUVIA = LLUVIA.time;
+//tiempoCR.MP10N       = MP10N.time;
+//tiempoCR.MP25N       = MP25N.time;
+tiempoCR.UV = UV.time;
+tiempoCR.RSOLAR = RSOLAR.time;
+tiempoCR.TI = TI.time;
+tiempoCR.PRESION = PRESION.time;
+//tiempoCR.UVA         = UVA.time;
+tiempoCR.UVB = UVB.time;
+tiempoCR.EVAP = EVAP.time;
+tiempoCR.MPCO = MPCO.time;
+
+var valor15 = {};
+valor15.WS = WS_15.value;
+valor15.WD = WD_15.value;
+valor15.MP25 = MP25_15.value;
+valor15.MP10 = MP10_15.value;
+//valor15.MP1         = MP1_15.value;
+//valor15.MPTOTALES   = MPTOTALES_15.value;
+valor15.TA = TA_15.value;
+valor15.RH = RH_15.value;
+valor15.SIGMA = SIGMA_15.value;
+valor15.NIEVE = NIEVE_15.value;
+valor15.LLUVIA = LLUVIA_15.value;
+//valor15.MP10N       = MP10N_15.value;
+//valor15.MP25N       = MP25N_15.value;
+valor15.UV = UV_15.value;
+valor15.RSOLAR = RSOLAR_15.value;
+valor15.TI = TI_15.value;
+valor15.PRESION = PRESION_15.value;
+//valor15.UVA         = UVA_15.value;
+valor15.UVB = UVB_15.value;
+valor15.EVAP = EVAP_15.value;
+valor15.MPCO = MPCO_15.value;
+
+var tiempo15 = {};
+tiempo15.WS = WS_15.time;
+tiempo15.WD = WD_15.time;
+tiempo15.MP25 = MP25_15.time;
+tiempo15.MP10 = MP10_15.time;
+//tiempo15.MP1         = MP1_15.time;
+//tiempo15.MPTOTALES   = MPTOTALES_15.time;
+tiempo15.TA = TA_15.time;
+tiempo15.RH = RH_15.time;
+tiempo15.SIGMA = SIGMA_15.time;
+tiempo15.NIEVE = NIEVE_15.time;
+tiempo15.LLUVIA = LLUVIA_15.time;
+//tiempo15.MP10N       = MP10N_15.time;
+//tiempo15.MP25N       = MP25N_15.time;
+tiempo15.UV = UV_15.time;
+tiempo15.RSOLAR = RSOLAR_15.time;
+tiempo15.TI = TI_15.time;
+tiempo15.PRESION = PRESION_15.time;
+//tiempo15.UVA         = UVA_15.time;
+tiempo15.UVB = UVB_15.time;
+tiempo15.EVAP = EVAP_15.time;
+tiempo15.MPCO = MPCO_15.time;
+
+for (var concentracion in valor15) {
+    if (tiempo15[concentracion] == -1 && valor15[concentracion] === 0) {
+        //print("No hay data");
+        if (concentracion == 'WS') {
+            WS_15.set(9999, formatearFecha(WS.past(YEAR, 3).firstTime));
+        } else if (concentracion == 'WD') {
+            WD_15.set(9999, formatearFecha(WD.past(YEAR, 3).firstTime));
+        } else if (concentracion == 'MP25') {
+            MP25_15.set(9999, formatearFecha(MP25.past(YEAR, 3).firstTime));
+        } else if (concentracion == 'MP10') {
+            MP10_15.set(9999, formatearFecha(MP10.past(YEAR, 3).firstTime));
+        }
+        /*else if(concentracion =='MP1') {            
+            MP1_15.set(9999,formatearFecha(MP1.past(YEAR,3).firstTime));
+        }
+        else if(concentracion =='MPTOTALES') {            
+            MPTOTALES_15.set(9999,formatearFecha(MPTOTALES.past(YEAR,3).firstTime));
+        }*/
+        else if (concentracion == 'RH') {
+            RH_15.set(9999, formatearFecha(RH.past(YEAR, 3).firstTime));
+        } else if (concentracion == 'TA') {
+            TA_15.set(9999, formatearFecha(TA.past(YEAR, 3).firstTime));
+        } else if (concentracion == 'SIGMA') {
+            SIGMA_15.set(9999, formatearFecha(SIGMA.past(YEAR, 3).firstTime));
+        } else if (concentracion == 'NIEVE') {
+            NIEVE_15.set(9999, formatearFecha(NIEVE.past(YEAR, 3).firstTime));
+        } else if (concentracion == 'LLUVIA') {
+            LLUVIA_15.set(9999, formatearFecha(LLUVIA.past(YEAR, 3).firstTime));
+        }
+        /*else if(concentracion =='MP10N') {
+            MP10N_15.set(9999,formatearFecha(MP10N.past(YEAR,3).firstTime));
+        }
+        else if(concentracion =='MP25N') {            
+            MP25N_15.set(9999,formatearFecha(MP25N.past(YEAR,3).firstTime));
+        }*/
+        else if (concentracion == 'UV') {
+            UV_15.set(9999, formatearFecha(UV.past(YEAR, 3).firstTime));
+        }
+        /*else if(concentracion =='UVA') {            
+            UVA_15.set(9999,formatearFecha(UVA.past(YEAR,3).firstTime));
+        }*/
+        else if (concentracion == 'UVB') {
+            UVB_15.set(9999, formatearFecha(UVB.past(YEAR, 3).firstTime));
+        } else if (concentracion == 'EVAP') {
+            EVAP_15.set(9999, formatearFecha(EVAP.past(YEAR, 3).firstTime));
+        } else if (concentracion == 'MPCO') {
+            MPCO_15.set(9999, formatearFecha(MPCO.past(YEAR, 3).firstTime));
+        } else if (concentracion == 'RSOLAR') {
+            RSOLAR_15.set(9999, formatearFecha(RSOLAR.past(YEAR, 3).firstTime));
+        } else if (concentracion == 'PRESION') {
+            PRESION_15.set(9999, formatearFecha(PRESION.past(YEAR, 3).firstTime));
+        } else if (concentracion == 'TI') {
+            TI_15.set(9999, formatearFecha(TI.past(YEAR, 3).firstTime));
+        }
+    } else {
+        var ultimoPromedio = parseInt(tiempo15[concentracion]);
+        var timestamp = parseInt(tiempoCR[concentracion]);
+        var diferenciaBloque = Math.abs(parseInt(((timestamp - ultimoPromedio) / 1000) / 60));
+        var vueltas = parseInt((diferenciaBloque) / 30);
+
+
+        //print("ultimo Promedio dia: " + new Date(ultimoPromedio));
+        //print("ultimo prom hora: " + new Date(timestamp));
+
+        //print("vueltas: " + vueltas);
+        //print("diferencia Bloque: " + diferenciaBloque);
+
+        var principio;
+        var fin;
+
+        if (vueltas > 30) {
+            vueltas = 30;
+        }
+
+        if (vueltas >= 1) {
+            for (y = 0; y < vueltas; y++) {
+
+                fechaUltimoPromedio = new Date(ultimoPromedio);
+
+
+                principio = fechaUltimoPromedio.setMinutes(fechaUltimoPromedio.getMinutes() + (desfase - 1));
+                fin = fechaUltimoPromedio.setMinutes(fechaUltimoPromedio.getMinutes() + 2);
+
+                ultimoPromedio = new Date(ultimoPromedio);
+                ultimoPromedio = ultimoPromedio.setMinutes(ultimoPromedio.getMinutes() + 15);
+
+                //print("desde: " + new Date(principio));
+                //print("hasta: " + new Date(fin));
+
+                var DatosPromedio;
+
+                if (concentracion == 'WS') {
+                    DatosPromedio = WS.pointValuesBetween(principio, fin);
+                } else if (concentracion == 'WD') {
+                    DatosPromedio = WD.pointValuesBetween(principio, fin);
+                } else if (concentracion == 'MP25') {
+                    DatosPromedio = MP25.pointValuesBetween(principio, fin);
+                } else if (concentracion == 'MP10') {
+                    DatosPromedio = MP10.pointValuesBetween(principio, fin);
+                }
+                /*else if(concentracion =='MP1') {            
+                    DatosPromedio = MP1.pointValuesBetween(principio,fin);
+                }
+                else if(concentracion =='MPTOTALES') {            
+                    DatosPromedio = MPTOTALES.pointValuesBetween(principio,fin);
+                }*/
+                else if (concentracion == 'RH') {
+                    DatosPromedio = RH.pointValuesBetween(principio, fin);
+                } else if (concentracion == 'TA') {
+                    DatosPromedio = TA.pointValuesBetween(principio, fin);
+                } else if (concentracion == 'SIGMA') {
+                    DatosPromedio = SIGMA.pointValuesBetween(principio, fin);
+                } else if (concentracion == 'NIEVE') {
+                    DatosPromedio = NIEVE.pointValuesBetween(principio, fin);
+                } else if (concentracion == 'LLUVIA') {
+                    DatosPromedio = LLUVIA.pointValuesBetween(principio, fin);
+                }
+                /*else if(concentracion =='MP10N') {
+                    DatosPromedio = MP10N.pointValuesBetween(principio,fin);
+                }
+                else if(concentracion =='MP25N') {            
+                    DatosPromedio = MP25N.pointValuesBetween(principio,fin);
+                }*/
+                else if (concentracion == 'UV') {
+                    DatosPromedio = UV.pointValuesBetween(principio, fin);
+                } else if (concentracion == 'RSOLAR') {
+                    DatosPromedio = RSOLAR.pointValuesBetween(principio, fin);
+                } else if (concentracion == 'TI') {
+                    DatosPromedio = TI.pointValuesBetween(principio, fin);
+                } else if (concentracion == 'PRESION') {
+                    DatosPromedio = PRESION.pointValuesBetween(principio, fin);
+                }
+                /*else if(concentracion =='UVA') {            
+                     DatosPromedio = UVA.pointValuesBetween(principio,fin);
+                }*/
+                else if (concentracion == 'UVB') {
+                    DatosPromedio = UVB.pointValuesBetween(principio, fin);
+                } else if (concentracion == 'EVAP') {
+                    DatosPromedio = EVAP.pointValuesBetween(principio, fin);
+                } else if (concentracion == 'MPCO') {
+                    DatosPromedio = MPCO.pointValuesBetween(principio, fin);
+                }
+
+                //print("datospromedio: " + DatosPromedio.get(0).value);  
+                //print("UltimoPaso " + new Date(ultimoPromedio));
+                var largo = parseFloat(DatosPromedio.size());
+                //print("LARGO: " + largo);
+
+                if (largo == 1) {
+                    var promedio = parseFloat(DatosPromedio.get(0).value);
+                } else {
+                    var promedio = 0;
+                }
+
+                if (concentracion == 'WS') {
+                    //print("concentracion " + concentracion);
+                    WS_15.set(promedio, ultimoPromedio);
+                } else if (concentracion == 'WD') {
+                    WD_15.set(promedio, ultimoPromedio);
+                } else if (concentracion == 'MP25') {
+                    MP25_15.set(promedio, ultimoPromedio);
+                } else if (concentracion == 'MP10') {
+                    MP10_15.set(promedio, ultimoPromedio);
+                }
+                /*else if(concentracion =='MP1') {            
+                    MP1_15.set(promedio,ultimoPromedio);
+                }
+                else if(concentracion =='MPTOTALES') {            
+                    MPTOTALES_15.set(promedio,ultimoPromedio);
+                }*/
+                else if (concentracion == 'RH') {
+                    RH_15.set(promedio, ultimoPromedio);
+                } else if (concentracion == 'TA') {
+                    TA_15.set(promedio, ultimoPromedio);
+                } else if (concentracion == 'SIG') {
+                    SIGMA_15.set(promedio, ultimoPromedio);
+                }
+                /*else if(concentracion =='MP10N') {            
+                    MP10N_15.set(promedio,ultimoPromedioScript);
+                }
+                else if(concentracion =='MP25N') {            
+                    MP25N_15.set(promedio,ultimoPromedioScript);
+                }*/
+                else if (concentracion == 'UV') {
+                    UV_15.set(promedio, ultimoPromedioScript);
+                } else if (concentracion == 'RSOLAR') {
+                    RSOLAR_15.set(promedio, ultimoPromedioScript);
+                } else if (concentracion == 'TI') {
+                    TI_15.set(promedio, ultimoPromedioScript);
+                } else if (concentracion == 'PRESION') {
+                    PRESION_15.set(promedio, ultimoPromedioScript);
+                }
+                /*else if(concentracion =='UVA') {            
+                    UVA_15.set(promedio,ultimoPromedio);
+                }*/
+                else if (concentracion == 'UVB') {
+                    UVB_15.set(promedio, ultimoPromedio);
+                } else if (concentracion == 'EVAP') {
+                    EVAP_15.set(promedio, ultimoPromedio);
+                } else if (concentracion == 'MPCO') {
+                    MPCO_15.set(promedio, ultimoPromedio);
+                }
+
+
             }
-        ],
-         "logLevel":"NONE",
-         "cronPattern":"0 0\/5 * * * ?",
-         "executionDelaySeconds":0,
-         "historicalSetting":false,
-         "script":"var correrPromedio = false;\nvar desfase = 15;\nif(correrPromedio) desfase = desfase *2;\n\nvar valorCR={};\n    valorCR.WS          = WS.value;\n    valorCR.WD          = WD.value;\n    valorCR.MP25        = MP25.value;\n    valorCR.MP10        = MP10.value;\n    \/\/valorCR.MP1         = MP1.value;\n    \/\/valorCR.MPTOTALES   = MPTOTALES.value;\n    valorCR.TA          = TA.value;\n    valorCR.HR          = RH.value;\n    valorCR.SIG         = SIGMA.value;\n    \/\/valorCR.UVA         = UVA.value;\n    valorCR.UVB         = UVB.value;\n    valorCR.EVAP        = EVAP.value;\n    valorCR.MPCO        = MPCO.value; \n\nvar tiempoCR={};\n    tiempoCR.WS          = WS.time;\n    tiempoCR.WD          = WD.time;\n    tiempoCR.MP25        = MP25.time;\n    tiempoCR.MP10        = MP10.time;\n    \/\/tiempoCR.MP1         = MP1.time;\n    \/\/tiempoCR.MPTOTALES   = MPTOTALES.time;\n    tiempoCR.TA          = TA.time;\n    tiempoCR.HR          = RH.time;\n    tiempoCR.SIG         = SIGMA.time;\n    \/\/tiempoCR.UVA         = UVA.time;\n    tiempoCR.UVB         = UVB.time;\n    tiempoCR.EVAP        = EVAP.time;\n    tiempoCR.MPCO        = MPCO.time; \n\nvar valor15={};\n    valor15.WS          = WS_15.value;\n    valor15.WD          = WD_15.value;\n    valor15.MP25        = MP25_15.value;\n    valor15.MP10        = MP10_15.value;\n    \/\/valor15.MP1         = MP1_15.value;\n    \/\/valor15.MPTOTALES   = MPTOTALES_15.value;\n    valor15.TA          = TA_15.value;\n    valor15.HR          = RH_15.value;\n    valor15.SIG         = SIGMA_15.value; \n    \/\/valor15.UVA         = UVA_15.value;\n    valor15.UVB         = UVB_15.value;\n    valor15.EVAP        = EVAP_15.value;\n    valor15.MPCO        = MPCO_15.value; \n\nvar tiempo15={};\n    tiempo15.WS          = WS_15.time;\n    tiempo15.WD          = WD_15.time;\n    tiempo15.MP25        = MP25_15.time;\n    tiempo15.MP10        = MP10_15.time;\n    \/\/tiempo15.MP1         = MP1_15.time;\n    \/\/tiempo15.MPTOTALES   = MPTOTALES_15.time;\n    tiempo15.TA          = TA_15.time;\n    tiempo15.HR          = RH_15.time;\n    tiempo15.SIG         = SIGMA_15.time;\n    \/\/tiempo15.UVA         = UVA_15.time;\n    tiempo15.UVB         = UVB_15.time;\n    tiempo15.EVAP        = EVAP_15.time;\n    tiempo15.MPCO        = MPCO_15.time; \n\nfor (var concentracion in valor15){\n\tif(tiempo15[concentracion] == -1 && valor15[concentracion] === 0){\n\t    \/\/print(\"No hay data\");\n\t\tif(concentracion =='WS') {\n            WS_15.set(9999,formatearFecha(WS.past(YEAR,3).firstTime));\n        }\n        else if(concentracion =='WD') {\n            WD_15.set(9999,formatearFecha(WD.past(YEAR,3).firstTime));\n        }\n        else if(concentracion =='MP25') {\n            MP25_15.set(9999,formatearFecha(MP25.past(YEAR,3).firstTime));\n        }\n        else if(concentracion =='MP10') {\n            MP10_15.set(9999,formatearFecha(MP10.past(YEAR,3).firstTime));\n        }\n        \/*else if(concentracion =='MP1') {            \n            MP1_15.set(9999,formatearFecha(MP1.past(YEAR,3).firstTime));\n        }\n        else if(concentracion =='MPTOTALES') {            \n            MPTOTALES_15.set(9999,formatearFecha(MPTOTALES.past(YEAR,3).firstTime));\n        }*\/\n        else if(concentracion =='HR') {            \n            RH_15.set(9999,formatearFecha(RH.past(YEAR,3).firstTime));\n        }\n        else if(concentracion =='TA') {            \n            TA_15.set(9999,formatearFecha(TA.past(YEAR,3).firstTime));\n        }\n        else if(concentracion =='SIG') {            \n            SIGMA_15.set(9999,formatearFecha(SIGMA.past(YEAR,3).firstTime));\n        }\n        \/*else if(concentracion =='UVA') {            \n            UVA_15.set(9999,formatearFecha(UVA.past(YEAR,3).firstTime));\n        }*\/\n        else if(concentracion =='UVB') {            \n            UVB_15.set(9999,formatearFecha(UVB.past(YEAR,3).firstTime));\n        }\n        else if(concentracion =='EVAP') {            \n            EVAP_15.set(9999,formatearFecha(EVAP.past(YEAR,3).firstTime));\n        }\n        else if(concentracion =='MPCO') {            \n            MPCO_15.set(9999,formatearFecha(MPCO.past(YEAR,3).firstTime));\n        }\n\t}\n\telse{\n\t\tvar ultimoPromedio   = parseInt(tiempo15[concentracion]);\n\t\tvar timestamp           = parseInt(tiempoCR[concentracion]);\n\t\tvar diferenciaBloque = Math.abs(parseInt(((timestamp - ultimoPromedio)\/1000)\/60));\n\t\tvar vueltas                 = parseInt((diferenciaBloque)\/30);\n\n\n\t\t\/\/print(\"ultimo Promedio dia: \" + new Date(ultimoPromedio));\n\t\t\/\/print(\"ultimo prom hora: \" + new Date(timestamp));\n\n\t\t\/\/print(\"vueltas: \" + vueltas);\n\t\t\/\/print(\"diferencia Bloque: \" + diferenciaBloque);\n\n\t\tvar principio;\n\t\tvar fin;\n\n\t\tif (vueltas > 30){\n\t\t\tvueltas = 30;\n\t\t}\n\n\t\tif(vueltas >= 1){\n\t\t\tfor(y=0; y < vueltas; y++){\n\n\t\t\t\tfechaUltimoPromedio = new Date(ultimoPromedio);\n\t\t\t\t\n\n\t\t\t\tprincipio = fechaUltimoPromedio.setMinutes(fechaUltimoPromedio.getMinutes() + (desfase -1) ); \n\t\t\t\tfin = fechaUltimoPromedio.setMinutes(fechaUltimoPromedio.getMinutes() + 2);\n\t\t\t\t\n\t\t\t\tultimoPromedio = new Date(ultimoPromedio);\n\t\t\t\tultimoPromedio = ultimoPromedio.setMinutes(ultimoPromedio.getMinutes() + 15);\n\t\t   \n\t\t\t\t\/\/print(\"desde: \" + new Date(principio));\n\t\t\t\t\/\/print(\"hasta: \" + new Date(fin));\n\n\t\t\t\tvar DatosPromedio;\n                    \n                if(concentracion =='WS') {\n                    DatosPromedio = WS.pointValuesBetween(principio,fin);\n                }\n                else if(concentracion =='WD') {\n                    DatosPromedio = WD.pointValuesBetween(principio,fin);\n                }\n                else if(concentracion =='MP25') {\n                    DatosPromedio = MP25.pointValuesBetween(principio,fin);\n                }\n                else if(concentracion =='MP10') {\n                    DatosPromedio = MP10.pointValuesBetween(principio,fin);\n                }\n                \/*else if(concentracion =='MP1') {            \n                    DatosPromedio = MP1.pointValuesBetween(principio,fin);\n                }\n                else if(concentracion =='MPTOTALES') {            \n                    DatosPromedio = MPTOTALES.pointValuesBetween(principio,fin);\n                }*\/\n                else if(concentracion =='HR') {            \n                    DatosPromedio = RH.pointValuesBetween(principio,fin);\n                }\n                else if(concentracion =='TA') {            \n                    DatosPromedio = TA.pointValuesBetween(principio,fin);\n                }\n                else if(concentracion =='SIG') {            \n                    DatosPromedio = SIGMA.pointValuesBetween(principio,fin);\n                }\n                \/*else if(concentracion =='UVA') {            \n                     DatosPromedio = UVA.pointValuesBetween(principio,fin);\n                }*\/\n                else if(concentracion =='UVB') {            \n                    DatosPromedio = UVB.pointValuesBetween(principio,fin);\n                }\n                else if(concentracion =='EVAP') {            \n                    DatosPromedio = EVAP.pointValuesBetween(principio,fin);\n                }\n                else if(concentracion =='MPCO') {            \n                    DatosPromedio = MPCO.pointValuesBetween(principio,fin);\n                }  \n\t\t\t\t\t\t\t\t\t\n\t\t\t\t\/\/print(\"datospromedio: \" + DatosPromedio.get(0).value);  \n\t\t\t\t\/\/print(\"UltimoPaso \" + new Date(ultimoPromedio));\n        \t    var largo = parseFloat(DatosPromedio.size());\n\t\t\t\t\/\/print(\"LARGO: \" + largo);\n\t\t\t\n\t\t\t\tif (largo == 1){\n\t\t\t\t\tvar promedio = parseFloat(DatosPromedio.get(0).value);\n\t\t\t\t\t\n                    if(concentracion =='WS') {\n                        \/\/print(\"concentracion \" + concentracion);\n                        WS_15.set(promedio,ultimoPromedio);\n                    }\n                    else if(concentracion =='WD') {\n                        WD_15.set(promedio,ultimoPromedio);\n                    }\n                    else if(concentracion =='MP25') {\n                        MP25_15.set(promedio,ultimoPromedio);\n                    }\n                    else if(concentracion =='MP10') {\n                        MP10_15.set(promedio,ultimoPromedio);\n                    }\n                    \/*else if(concentracion =='MP1') {            \n                        MP1_15.set(promedio,ultimoPromedio);\n                    }\n                    else if(concentracion =='MPTOTALES') {            \n                        MPTOTALES_15.set(promedio,ultimoPromedio);\n                    }*\/\n                    else if(concentracion =='HR') {            \n                        RH_15.set(promedio,ultimoPromedio);\n                    }\n                    else if(concentracion =='TA') {            \n                        TA_15.set(promedio,ultimoPromedio);\n                    }\n                    else if(concentracion =='SIG') {            \n                        SIGMA_15.set(promedio,ultimoPromedio);\n                    }\n                    \/*else if(concentracion =='UVA') {            \n                        UVA_15.set(promedio,ultimoPromedio);\n                    }*\/\n                    else if(concentracion =='UVB') {            \n                        UVB_15.set(promedio,ultimoPromedio);\n                    }\n                    else if(concentracion =='EVAP') {            \n                        EVAP_15.set(promedio,ultimoPromedio);\n                    }\n                    else if(concentracion =='MPCO') {            \n                        MPCO_15.set(promedio,ultimoPromedio);\n                    }\n                }\n                else{\n                var promedio = 0;\n\t\t\t\t\t\n                    if(concentracion =='WS') {\n                        \/\/print(\"concentracion \" + concentracion);\n                        WS_15.set(promedio,ultimoPromedio);\n                    }\n                    else if(concentracion =='WD') {\n                        WD_15.set(promedio,ultimoPromedio);\n                    }\n                    else if(concentracion =='MP25') {\n                        MP25_15.set(promedio,ultimoPromedio);\n                    }\n                    else if(concentracion =='MP10') {\n                        MP10_15.set(promedio,ultimoPromedio);\n                    }\n                    \/*else if(concentracion =='MP1') {            \n                        MP1_15.set(promedio,ultimoPromedio);\n                    }\n                    else if(concentracion =='MPTOTALES') {            \n                        MPTOTALES_15.set(promedio,ultimoPromedio);\n                    }*\/\n                    else if(concentracion =='HR') {            \n                        RH_15.set(promedio,ultimoPromedio);\n                    }\n                    else if(concentracion =='TA') {            \n                        TA_15.set(promedio,ultimoPromedio);\n                    }\n                    else if(concentracion =='SIG') {            \n                        SIGMA_15.set(promedio,ultimoPromedio);\n                    }\n                    else if(concentracion =='UVA') {            \n                        UVA_15.set(promedio,ultimoPromedio);\n                    }\n                    else if(concentracion =='UVB') {            \n                        UVB_15.set(promedio,ultimoPromedio);\n                    }\n                    else if(concentracion =='EVAP') {            \n                        EVAP_15.set(promedio,ultimoPromedio);\n                    }\n                    else if(concentracion =='MPCO') {            \n                        MPCO_15.set(promedio,ultimoPromedio);\n                    }\n                    \n                }\n\t\t\t}\n\t\t}\n\t}\n}\n\nfunction formatearFecha(time){\n    var tiempo = parseInt(time);\n    var tiempoDefault    = new Date(tiempo);\n    tiempoDefault.setMinutes(tiempoDefault.getMinutes() - desfase);\n    return tiempoDefault;\n}",
-         "scriptPermissions":{
-            "customPermissions":"",
-            "dataPointReadPermissions":"superadmin",
-            "dataPointSetPermissions":"superadmin",
-            "dataSourcePermissions":"superadmin"
-         },
-         "editPermission":"user",
-         "purgeOverride":false,
-         "purgePeriod":1
-      }
-   ],
-   "dataPoints":[
-      {
-         "xid":"DP_numeroEstacion_P15_UVA",
-         "name":"UV A",
-         "enabled":false,
-         "loggingType":"ON_TS_CHANGE",
-         "intervalLoggingPeriodType":"MINUTES",
-         "intervalLoggingType":"AVERAGE",
-         "purgeType":"YEARS",
-         "pointLocator":{
-            "dataType":"NUMERIC",
-            "contextUpdate":false,
-            "settable":true,
-            "varName":"UVA_15"
-         },
-         "eventDetectors":[
-         ],
-         "plotType":"SPLINE",
-         "rollup":"NONE",
-         "unit":"",
-         "simplifyType":"NONE",
-         "chartColour":"black",
-         "chartRenderer":{
-            "type":"IMAGE",
-            "timePeriodType":"DAYS",
-            "numberOfPeriods":1
-         },
-         "dataSourceXid":"DS_numeroEstacion_PROM_15",
-         "defaultCacheSize":1,
-         "deviceName":"nombreEstacion - Promedio 15",
-         "discardExtremeValues":false,
-         "discardHighLimit":1.7976931348623157E308,
-         "discardLowLimit":-1.7976931348623157E308,
-         "intervalLoggingPeriod":1,
-         "intervalLoggingSampleWindowSize":0,
-         "overrideIntervalLoggingSamples":false,
-         "preventSetExtremeValues":false,
-         "purgeOverride":false,
-         "purgePeriod":1,
-         "readPermission":"user",
-         "setExtremeHighLimit":1.7976931348623157E308,
-         "setExtremeLowLimit":-1.7976931348623157E308,
-         "setPermission":"",
-         "tags":{
-         },
-         "textRenderer":{
-            "type":"ANALOG",
-            "useUnitAsSuffix":true,
-            "unit":"",
-            "renderedUnit":"",
-            "format":"0.00"
-         },
-         "tolerance":0.0
-      },
-      {
-         "xid":"DP_numeroEstacion_P15_UVB",
-         "name":"UV B",
-         "enabled":true,
-         "loggingType":"ON_TS_CHANGE",
-         "intervalLoggingPeriodType":"MINUTES",
-         "intervalLoggingType":"AVERAGE",
-         "purgeType":"YEARS",
-         "pointLocator":{
-            "dataType":"NUMERIC",
-            "contextUpdate":false,
-            "settable":true,
-            "varName":"UVB_15"
-         },
-         "eventDetectors":[
-         ],
-         "plotType":"SPLINE",
-         "rollup":"NONE",
-         "unit":"",
-         "simplifyType":"NONE",
-         "chartColour":"black",
-         "chartRenderer":{
-            "type":"IMAGE",
-            "timePeriodType":"DAYS",
-            "numberOfPeriods":1
-         },
-         "dataSourceXid":"DS_numeroEstacion_PROM_15",
-         "defaultCacheSize":1,
-         "deviceName":"nombreEstacion - Promedio 15",
-         "discardExtremeValues":false,
-         "discardHighLimit":1.7976931348623157E308,
-         "discardLowLimit":-1.7976931348623157E308,
-         "intervalLoggingPeriod":1,
-         "intervalLoggingSampleWindowSize":0,
-         "overrideIntervalLoggingSamples":false,
-         "preventSetExtremeValues":false,
-         "purgeOverride":false,
-         "purgePeriod":1,
-         "readPermission":"user",
-         "setExtremeHighLimit":1.7976931348623157E308,
-         "setExtremeLowLimit":-1.7976931348623157E308,
-         "setPermission":"",
-         "tags":{
-         },
-         "textRenderer":{
-            "type":"ANALOG",
-            "useUnitAsSuffix":false,
-            "unit":"",
-            "renderedUnit":"",
-            "suffix":"",
-            "format":"0.00"
-         },
-         "tolerance":0.0
-      },
-      {
-         "xid":"DP_numeroEstacion_P15_EVAP",
-         "name":"Evaporacion",
-         "enabled":false,
-         "loggingType":"ON_TS_CHANGE",
-         "intervalLoggingPeriodType":"MINUTES",
-         "intervalLoggingType":"AVERAGE",
-         "purgeType":"YEARS",
-         "pointLocator":{
-            "dataType":"NUMERIC",
-            "contextUpdate":false,
-            "settable":true,
-            "varName":"EVAP_15"
-         },
-         "eventDetectors":[
-         ],
-         "plotType":"SPLINE",
-         "rollup":"NONE",
-         "unit":"mm",
-         "simplifyType":"NONE",
-         "chartColour":"black",
-         "chartRenderer":{
-            "type":"IMAGE",
-            "timePeriodType":"DAYS",
-            "numberOfPeriods":1
-         },
-         "dataSourceXid":"DS_numeroEstacion_PROM_15",
-         "defaultCacheSize":1,
-         "deviceName":"nombreEstacion - Promedio 15",
-         "discardExtremeValues":false,
-         "discardHighLimit":1.7976931348623157E308,
-         "discardLowLimit":-1.7976931348623157E308,
-         "intervalLoggingPeriod":1,
-         "intervalLoggingSampleWindowSize":0,
-         "overrideIntervalLoggingSamples":false,
-         "preventSetExtremeValues":false,
-         "purgeOverride":false,
-         "purgePeriod":1,
-         "readPermission":"user",
-         "setExtremeHighLimit":1.7976931348623157E308,
-         "setExtremeLowLimit":-1.7976931348623157E308,
-         "setPermission":"",
-         "tags":{
-         },
-         "textRenderer":{
-            "type":"ANALOG",
-            "useUnitAsSuffix":true,
-            "unit":"mm",
-            "renderedUnit":"mm",
-            "format":"0.00"
-         },
-         "tolerance":0.0
-      },
-      {
-         "xid":"DP_numeroEstacion_P15_MPCO",
-         "name":"MP Coarse",
-         "enabled":true,
-         "loggingType":"ON_TS_CHANGE",
-         "intervalLoggingPeriodType":"MINUTES",
-         "intervalLoggingType":"AVERAGE",
-         "purgeType":"YEARS",
-         "pointLocator":{
-            "dataType":"NUMERIC",
-            "contextUpdate":false,
-            "settable":true,
-            "varName":"MPCO_15"
-         },
-         "eventDetectors":[
-         ],
-         "plotType":"SPLINE",
-         "rollup":"NONE",
-         "unit":"",
-         "simplifyType":"NONE",
-         "chartColour":"black",
-         "chartRenderer":{
-            "type":"IMAGE",
-            "timePeriodType":"DAYS",
-            "numberOfPeriods":1
-         },
-         "dataSourceXid":"DS_numeroEstacion_PROM_15",
-         "defaultCacheSize":1,
-         "deviceName":"nombreEstacion - Promedio 15",
-         "discardExtremeValues":false,
-         "discardHighLimit":1.7976931348623157E308,
-         "discardLowLimit":-1.7976931348623157E308,
-         "intervalLoggingPeriod":1,
-         "intervalLoggingSampleWindowSize":0,
-         "overrideIntervalLoggingSamples":false,
-         "preventSetExtremeValues":false,
-         "purgeOverride":false,
-         "purgePeriod":1,
-         "readPermission":"user",
-         "setExtremeHighLimit":1.7976931348623157E308,
-         "setExtremeLowLimit":-1.7976931348623157E308,
-         "setPermission":"",
-         "tags":{
-         },
-         "textRenderer":{
-            "type":"ANALOG",
-            "useUnitAsSuffix":true,
-            "unit":"",
-            "renderedUnit":"",
-            "format":"0.00"
-         },
-         "tolerance":0.0
-      },
-      {
-         "xid":"DP_numeroEstacion_P15_AN",
-         "name":"Altura Nieve",
-         "enabled":false,
-         "loggingType":"ON_TS_CHANGE",
-         "intervalLoggingPeriodType":"MINUTES",
-         "intervalLoggingType":"AVERAGE",
-         "purgeType":"YEARS",
-         "pointLocator":{
-            "dataType":"NUMERIC",
-            "contextUpdate":false,
-            "settable":true,
-            "varName":"NIEVE_15"
-         },
-         "eventDetectors":[
-         ],
-         "plotType":"SPLINE",
-         "rollup":"NONE",
-         "unit":"mm",
-         "simplifyType":"NONE",
-         "chartColour":"black",
-         "chartRenderer":{
-            "type":"IMAGE",
-            "timePeriodType":"DAYS",
-            "numberOfPeriods":1
-         },
-         "dataSourceXid":"DS_numeroEstacion_PROM_15",
-         "defaultCacheSize":1,
-         "deviceName":"nombreEstacion - Promedio 15",
-         "discardExtremeValues":false,
-         "discardHighLimit":1.7976931348623157E308,
-         "discardLowLimit":-1.7976931348623157E308,
-         "intervalLoggingPeriod":1,
-         "intervalLoggingSampleWindowSize":0,
-         "overrideIntervalLoggingSamples":false,
-         "preventSetExtremeValues":false,
-         "purgeOverride":false,
-         "purgePeriod":1,
-         "readPermission":"user",
-         "setExtremeHighLimit":1.7976931348623157E308,
-         "setExtremeLowLimit":-1.7976931348623157E308,
-         "setPermission":"",
-         "tags":{
-         },
-         "textRenderer":{
-            "type":"ANALOG",
-            "useUnitAsSuffix":true,
-            "unit":"mm",
-            "renderedUnit":"mm",
-            "format":"0.00"
-         },
-         "tolerance":0.0
-      },
-      {
-         "xid":"DP_numeroEstacion_P15_HR",
-         "name":"Humedad Relativa",
-         "enabled":true,
-         "loggingType":"ON_TS_CHANGE",
-         "intervalLoggingPeriodType":"MINUTES",
-         "intervalLoggingType":"AVERAGE",
-         "purgeType":"YEARS",
-         "pointLocator":{
-            "dataType":"NUMERIC",
-            "contextUpdate":false,
-            "settable":true,
-            "varName":"RH_15"
-         },
-         "eventDetectors":[
-         ],
-         "plotType":"SPLINE",
-         "rollup":"NONE",
-         "unit":"%",
-         "simplifyType":"NONE",
-         "chartColour":"black",
-         "chartRenderer":{
-            "type":"IMAGE",
-            "timePeriodType":"DAYS",
-            "numberOfPeriods":1
-         },
-         "dataSourceXid":"DS_numeroEstacion_PROM_15",
-         "defaultCacheSize":1,
-         "deviceName":"nombreEstacion - Promedio 15",
-         "discardExtremeValues":false,
-         "discardHighLimit":1.7976931348623157E308,
-         "discardLowLimit":-1.7976931348623157E308,
-         "intervalLoggingPeriod":1,
-         "intervalLoggingSampleWindowSize":0,
-         "overrideIntervalLoggingSamples":false,
-         "preventSetExtremeValues":false,
-         "purgeOverride":false,
-         "purgePeriod":1,
-         "readPermission":"user",
-         "setExtremeHighLimit":1.7976931348623157E308,
-         "setExtremeLowLimit":-1.7976931348623157E308,
-         "setPermission":"",
-         "tags":{
-         },
-         "textRenderer":{
-            "type":"ANALOG",
-            "useUnitAsSuffix":true,
-            "unit":"%",
-            "renderedUnit":"%",
-            "format":"0.00"
-         },
-         "tolerance":0.0
-      },
-      {
-         "xid":"DP_numeroEstacion_P15_LL",
-         "name":"Lluvia Total",
-         "enabled":false,
-         "loggingType":"ON_TS_CHANGE",
-         "intervalLoggingPeriodType":"MINUTES",
-         "intervalLoggingType":"AVERAGE",
-         "purgeType":"YEARS",
-         "pointLocator":{
-            "dataType":"NUMERIC",
-            "contextUpdate":false,
-            "settable":true,
-            "varName":"LLUVIA_15"
-         },
-         "eventDetectors":[
-         ],
-         "plotType":"SPLINE",
-         "rollup":"NONE",
-         "unit":"mm",
-         "simplifyType":"NONE",
-         "chartColour":"black",
-         "chartRenderer":{
-            "type":"IMAGE",
-            "timePeriodType":"DAYS",
-            "numberOfPeriods":1
-         },
-         "dataSourceXid":"DS_numeroEstacion_PROM_15",
-         "defaultCacheSize":1,
-         "deviceName":"nombreEstacion - Promedio 15",
-         "discardExtremeValues":false,
-         "discardHighLimit":1.7976931348623157E308,
-         "discardLowLimit":-1.7976931348623157E308,
-         "intervalLoggingPeriod":1,
-         "intervalLoggingSampleWindowSize":0,
-         "overrideIntervalLoggingSamples":false,
-         "preventSetExtremeValues":false,
-         "purgeOverride":false,
-         "purgePeriod":1,
-         "readPermission":"user",
-         "setExtremeHighLimit":1.7976931348623157E308,
-         "setExtremeLowLimit":-1.7976931348623157E308,
-         "setPermission":"",
-         "tags":{
-         },
-         "textRenderer":{
-            "type":"ANALOG",
-            "useUnitAsSuffix":true,
-            "unit":"mm",
-            "renderedUnit":"mm",
-            "format":"0.00"
-         },
-         "tolerance":0.0
-      },
-      {
-         "xid":"DP_numeroEstacion_P15_MP10",
-         "name":"MP 10",
-         "enabled":true,
-         "loggingType":"ON_TS_CHANGE",
-         "intervalLoggingPeriodType":"MINUTES",
-         "intervalLoggingType":"AVERAGE",
-         "purgeType":"YEARS",
-         "pointLocator":{
-            "dataType":"NUMERIC",
-            "contextUpdate":false,
-            "settable":true,
-            "varName":"MP10_15"
-         },
-         "eventDetectors":[
-         ],
-         "plotType":"SPLINE",
-         "rollup":"NONE",
-         "unit":"",
-         "simplifyType":"NONE",
-         "chartColour":"black",
-         "chartRenderer":{
-            "type":"IMAGE",
-            "timePeriodType":"DAYS",
-            "numberOfPeriods":1
-         },
-         "dataSourceXid":"DS_numeroEstacion_PROM_15",
-         "defaultCacheSize":1,
-         "deviceName":"nombreEstacion - Promedio 15",
-         "discardExtremeValues":false,
-         "discardHighLimit":1.7976931348623157E308,
-         "discardLowLimit":-1.7976931348623157E308,
-         "intervalLoggingPeriod":1,
-         "intervalLoggingSampleWindowSize":0,
-         "overrideIntervalLoggingSamples":false,
-         "preventSetExtremeValues":false,
-         "purgeOverride":false,
-         "purgePeriod":1,
-         "readPermission":"user",
-         "setExtremeHighLimit":1.7976931348623157E308,
-         "setExtremeLowLimit":-1.7976931348623157E308,
-         "setPermission":"",
-         "tags":{
-         },
-         "textRenderer":{
-            "type":"ANALOG",
-            "useUnitAsSuffix":false,
-            "unit":"",
-            "renderedUnit":"",
-            "suffix":" µg\/m3",
-            "format":"0.00"
-         },
-         "tolerance":0.0
-      },
-      {
-         "xid":"DP_numeroEstacion_P15_MP10N",
-         "name":"MP 10 (N)",
-         "enabled":false,
-         "loggingType":"ON_TS_CHANGE",
-         "intervalLoggingPeriodType":"MINUTES",
-         "intervalLoggingType":"AVERAGE",
-         "purgeType":"YEARS",
-         "pointLocator":{
-            "dataType":"NUMERIC",
-            "contextUpdate":false,
-            "settable":true,
-            "varName":"MP10N_15"
-         },
-         "eventDetectors":[
-         ],
-         "plotType":"SPLINE",
-         "rollup":"NONE",
-         "unit":"",
-         "simplifyType":"NONE",
-         "chartColour":"black",
-         "chartRenderer":{
-            "type":"IMAGE",
-            "timePeriodType":"DAYS",
-            "numberOfPeriods":1
-         },
-         "dataSourceXid":"DS_numeroEstacion_PROM_15",
-         "defaultCacheSize":1,
-         "deviceName":"nombreEstacion - Promedio 15",
-         "discardExtremeValues":false,
-         "discardHighLimit":1.7976931348623157E308,
-         "discardLowLimit":-1.7976931348623157E308,
-         "intervalLoggingPeriod":1,
-         "intervalLoggingSampleWindowSize":0,
-         "overrideIntervalLoggingSamples":false,
-         "preventSetExtremeValues":false,
-         "purgeOverride":false,
-         "purgePeriod":1,
-         "readPermission":"user",
-         "setExtremeHighLimit":1.7976931348623157E308,
-         "setExtremeLowLimit":-1.7976931348623157E308,
-         "setPermission":"",
-         "tags":{
-         },
-         "textRenderer":{
-            "type":"ANALOG",
-            "useUnitAsSuffix":false,
-            "unit":"",
-            "renderedUnit":"",
-            "suffix":" µg\/m3",
-            "format":"0.00"
-         },
-         "tolerance":0.0
-      },
-      {
-         "xid":"DP_numeroEstacion_P15_MP25",
-         "name":"MP 2.5",
-         "enabled":true,
-         "loggingType":"ON_TS_CHANGE",
-         "intervalLoggingPeriodType":"MINUTES",
-         "intervalLoggingType":"AVERAGE",
-         "purgeType":"YEARS",
-         "pointLocator":{
-            "dataType":"NUMERIC",
-            "contextUpdate":false,
-            "settable":true,
-            "varName":"MP25_15"
-         },
-         "eventDetectors":[
-         ],
-         "plotType":"SPLINE",
-         "rollup":"NONE",
-         "unit":"",
-         "simplifyType":"NONE",
-         "chartColour":"black",
-         "chartRenderer":{
-            "type":"IMAGE",
-            "timePeriodType":"DAYS",
-            "numberOfPeriods":1
-         },
-         "dataSourceXid":"DS_numeroEstacion_PROM_15",
-         "defaultCacheSize":1,
-         "deviceName":"nombreEstacion - Promedio 15",
-         "discardExtremeValues":false,
-         "discardHighLimit":1.7976931348623157E308,
-         "discardLowLimit":-1.7976931348623157E308,
-         "intervalLoggingPeriod":1,
-         "intervalLoggingSampleWindowSize":0,
-         "overrideIntervalLoggingSamples":false,
-         "preventSetExtremeValues":false,
-         "purgeOverride":false,
-         "purgePeriod":1,
-         "readPermission":"user",
-         "setExtremeHighLimit":1.7976931348623157E308,
-         "setExtremeLowLimit":-1.7976931348623157E308,
-         "setPermission":"",
-         "tags":{
-         },
-         "textRenderer":{
-            "type":"ANALOG",
-            "useUnitAsSuffix":false,
-            "unit":"",
-            "renderedUnit":"",
-            "suffix":" µg\/m3",
-            "format":"0.00"
-         },
-         "tolerance":0.0
-      },
-      {
-         "xid":"DP_numeroEstacion_P15_MP25N",
-         "name":"MP 2.5 (N)",
-         "enabled":false,
-         "loggingType":"ON_TS_CHANGE",
-         "intervalLoggingPeriodType":"MINUTES",
-         "intervalLoggingType":"AVERAGE",
-         "purgeType":"YEARS",
-         "pointLocator":{
-            "dataType":"NUMERIC",
-            "contextUpdate":false,
-            "settable":true,
-            "varName":"MP25N_15"
-         },
-         "eventDetectors":[
-         ],
-         "plotType":"SPLINE",
-         "rollup":"NONE",
-         "unit":"",
-         "simplifyType":"NONE",
-         "chartColour":"black",
-         "chartRenderer":{
-            "type":"IMAGE",
-            "timePeriodType":"DAYS",
-            "numberOfPeriods":1
-         },
-         "dataSourceXid":"DS_numeroEstacion_PROM_15",
-         "defaultCacheSize":1,
-         "deviceName":"nombreEstacion - Promedio 15",
-         "discardExtremeValues":false,
-         "discardHighLimit":1.7976931348623157E308,
-         "discardLowLimit":-1.7976931348623157E308,
-         "intervalLoggingPeriod":1,
-         "intervalLoggingSampleWindowSize":0,
-         "overrideIntervalLoggingSamples":false,
-         "preventSetExtremeValues":false,
-         "purgeOverride":false,
-         "purgePeriod":1,
-         "readPermission":"user",
-         "setExtremeHighLimit":1.7976931348623157E308,
-         "setExtremeLowLimit":-1.7976931348623157E308,
-         "setPermission":"",
-         "tags":{
-         },
-         "textRenderer":{
-            "type":"ANALOG",
-            "useUnitAsSuffix":false,
-            "unit":"",
-            "renderedUnit":"",
-            "suffix":" µg\/m3",
-            "format":"0.00"
-         },
-         "tolerance":0.0
-      },
-      {
-         "xid":"DP_numeroEstacion_P15_MP1",
-         "name":"MP 1",
-         "enabled":false,
-         "loggingType":"ON_TS_CHANGE",
-         "intervalLoggingPeriodType":"MINUTES",
-         "intervalLoggingType":"AVERAGE",
-         "purgeType":"YEARS",
-         "pointLocator":{
-            "dataType":"NUMERIC",
-            "contextUpdate":false,
-            "settable":true,
-            "varName":"MP1_15"
-         },
-         "eventDetectors":[
-         ],
-         "plotType":"SPLINE",
-         "rollup":"NONE",
-         "unit":"",
-         "simplifyType":"NONE",
-         "chartColour":"black",
-         "chartRenderer":{
-            "type":"IMAGE",
-            "timePeriodType":"DAYS",
-            "numberOfPeriods":1
-         },
-         "dataSourceXid":"DS_numeroEstacion_PROM_15",
-         "defaultCacheSize":1,
-         "deviceName":"nombreEstacion - Promedio 15",
-         "discardExtremeValues":false,
-         "discardHighLimit":1.7976931348623157E308,
-         "discardLowLimit":-1.7976931348623157E308,
-         "intervalLoggingPeriod":1,
-         "intervalLoggingSampleWindowSize":0,
-         "overrideIntervalLoggingSamples":false,
-         "preventSetExtremeValues":false,
-         "purgeOverride":false,
-         "purgePeriod":1,
-         "readPermission":"user",
-         "setExtremeHighLimit":1.7976931348623157E308,
-         "setExtremeLowLimit":-1.7976931348623157E308,
-         "setPermission":"",
-         "tags":{
-         },
-         "textRenderer":{
-            "type":"ANALOG",
-            "useUnitAsSuffix":false,
-            "unit":"",
-            "renderedUnit":"",
-            "suffix":" µg\/m3",
-            "format":"0.00"
-         },
-         "tolerance":0.0
-      },
-      {
-         "xid":"DP_numeroEstacion_P15_MPTOTALES",
-         "name":"MP Totales",
-         "enabled":false,
-         "loggingType":"ON_TS_CHANGE",
-         "intervalLoggingPeriodType":"MINUTES",
-         "intervalLoggingType":"AVERAGE",
-         "purgeType":"YEARS",
-         "pointLocator":{
-            "dataType":"NUMERIC",
-            "contextUpdate":false,
-            "settable":true,
-            "varName":"MPTOTALES_15"
-         },
-         "eventDetectors":[
-         ],
-         "plotType":"SPLINE",
-         "rollup":"NONE",
-         "unit":"",
-         "simplifyType":"NONE",
-         "chartColour":"black",
-         "chartRenderer":{
-            "type":"IMAGE",
-            "timePeriodType":"DAYS",
-            "numberOfPeriods":1
-         },
-         "dataSourceXid":"DS_numeroEstacion_PROM_15",
-         "defaultCacheSize":1,
-         "deviceName":"nombreEstacion - Promedio 15",
-         "discardExtremeValues":false,
-         "discardHighLimit":1.7976931348623157E308,
-         "discardLowLimit":-1.7976931348623157E308,
-         "intervalLoggingPeriod":1,
-         "intervalLoggingSampleWindowSize":0,
-         "overrideIntervalLoggingSamples":false,
-         "preventSetExtremeValues":false,
-         "purgeOverride":false,
-         "purgePeriod":1,
-         "readPermission":"user",
-         "setExtremeHighLimit":1.7976931348623157E308,
-         "setExtremeLowLimit":-1.7976931348623157E308,
-         "setPermission":"",
-         "tags":{
-         },
-         "textRenderer":{
-            "type":"ANALOG",
-            "useUnitAsSuffix":false,
-            "unit":"",
-            "renderedUnit":"",
-            "suffix":" µg\/m3",
-            "format":"0.00"
-         },
-         "tolerance":0.0
-      },
-      {
-         "xid":"DP_numeroEstacion_P15_PA",
-         "name":"Presión Atmosférica",
-         "enabled":false,
-         "loggingType":"ON_TS_CHANGE",
-         "intervalLoggingPeriodType":"MINUTES",
-         "intervalLoggingType":"AVERAGE",
-         "purgeType":"YEARS",
-         "pointLocator":{
-            "dataType":"NUMERIC",
-            "contextUpdate":false,
-            "settable":true,
-            "varName":"PRESION_15"
-         },
-         "eventDetectors":[
-         ],
-         "plotType":"SPLINE",
-         "rollup":"NONE",
-         "unit":"mmHg",
-         "simplifyType":"NONE",
-         "chartColour":"black",
-         "chartRenderer":{
-            "type":"IMAGE",
-            "timePeriodType":"DAYS",
-            "numberOfPeriods":1
-         },
-         "dataSourceXid":"DS_numeroEstacion_PROM_15",
-         "defaultCacheSize":1,
-         "deviceName":"nombreEstacion - Promedio 15",
-         "discardExtremeValues":false,
-         "discardHighLimit":1.7976931348623157E308,
-         "discardLowLimit":-1.7976931348623157E308,
-         "intervalLoggingPeriod":1,
-         "intervalLoggingSampleWindowSize":0,
-         "overrideIntervalLoggingSamples":false,
-         "preventSetExtremeValues":false,
-         "purgeOverride":false,
-         "purgePeriod":1,
-         "readPermission":"user",
-         "setExtremeHighLimit":1.7976931348623157E308,
-         "setExtremeLowLimit":-1.7976931348623157E308,
-         "setPermission":"",
-         "tags":{
-         },
-         "textRenderer":{
-            "type":"ANALOG",
-            "useUnitAsSuffix":true,
-            "unit":"mmHg",
-            "renderedUnit":"mmHg",
-            "format":"0.00"
-         },
-         "tolerance":0.0
-      },
-      {
-         "xid":"DP_numeroEstacion_P15_RS",
-         "name":"Radiación Solar",
-         "enabled":false,
-         "loggingType":"ON_TS_CHANGE",
-         "intervalLoggingPeriodType":"MINUTES",
-         "intervalLoggingType":"AVERAGE",
-         "purgeType":"YEARS",
-         "pointLocator":{
-            "dataType":"NUMERIC",
-            "contextUpdate":false,
-            "settable":true,
-            "varName":"RSOLAR_15"
-         },
-         "eventDetectors":[
-         ],
-         "plotType":"SPLINE",
-         "rollup":"NONE",
-         "unit":"",
-         "simplifyType":"NONE",
-         "chartColour":"black",
-         "chartRenderer":{
-            "type":"IMAGE",
-            "timePeriodType":"DAYS",
-            "numberOfPeriods":1
-         },
-         "dataSourceXid":"DS_numeroEstacion_PROM_15",
-         "defaultCacheSize":1,
-         "deviceName":"nombreEstacion - Promedio 15",
-         "discardExtremeValues":false,
-         "discardHighLimit":1.7976931348623157E308,
-         "discardLowLimit":-1.7976931348623157E308,
-         "intervalLoggingPeriod":1,
-         "intervalLoggingSampleWindowSize":0,
-         "overrideIntervalLoggingSamples":false,
-         "preventSetExtremeValues":false,
-         "purgeOverride":false,
-         "purgePeriod":1,
-         "readPermission":"user",
-         "setExtremeHighLimit":1.7976931348623157E308,
-         "setExtremeLowLimit":-1.7976931348623157E308,
-         "setPermission":"",
-         "tags":{
-         },
-         "textRenderer":{
-            "type":"ANALOG",
-            "useUnitAsSuffix":false,
-            "unit":"",
-            "renderedUnit":"",
-            "suffix":" W\/m2",
-            "format":"0.00"
-         },
-         "tolerance":0.0
-      },
-      {
-         "xid":"DP_numeroEstacion_P15_UV",
-         "name":"Radiación UV",
-         "enabled":false,
-         "loggingType":"ON_TS_CHANGE",
-         "intervalLoggingPeriodType":"MINUTES",
-         "intervalLoggingType":"AVERAGE",
-         "purgeType":"YEARS",
-         "pointLocator":{
-            "dataType":"NUMERIC",
-            "contextUpdate":false,
-            "settable":true,
-            "varName":"UV_15"
-         },
-         "eventDetectors":[
-         ],
-         "plotType":"SPLINE",
-         "rollup":"NONE",
-         "unit":"",
-         "simplifyType":"NONE",
-         "chartColour":"black",
-         "chartRenderer":{
-            "type":"IMAGE",
-            "timePeriodType":"DAYS",
-            "numberOfPeriods":1
-         },
-         "dataSourceXid":"DS_numeroEstacion_PROM_15",
-         "defaultCacheSize":1,
-         "deviceName":"nombreEstacion - Promedio 15",
-         "discardExtremeValues":false,
-         "discardHighLimit":1.7976931348623157E308,
-         "discardLowLimit":-1.7976931348623157E308,
-         "intervalLoggingPeriod":1,
-         "intervalLoggingSampleWindowSize":0,
-         "overrideIntervalLoggingSamples":false,
-         "preventSetExtremeValues":false,
-         "purgeOverride":false,
-         "purgePeriod":1,
-         "readPermission":"user",
-         "setExtremeHighLimit":1.7976931348623157E308,
-         "setExtremeLowLimit":-1.7976931348623157E308,
-         "setPermission":"",
-         "tags":{
-         },
-         "textRenderer":{
-            "type":"ANALOG",
-            "useUnitAsSuffix":false,
-            "unit":"",
-            "renderedUnit":"",
-            "suffix":" Índice",
-            "format":"0"
-         },
-         "tolerance":0.0
-      },
-      {
-         "xid":"DP_numeroEstacion_P15_SIG",
-         "name":"Sigma",
-         "enabled":true,
-         "loggingType":"ON_TS_CHANGE",
-         "intervalLoggingPeriodType":"MINUTES",
-         "intervalLoggingType":"AVERAGE",
-         "purgeType":"YEARS",
-         "pointLocator":{
-            "dataType":"NUMERIC",
-            "contextUpdate":false,
-            "settable":true,
-            "varName":"SIGMA_15"
-         },
-         "eventDetectors":[
-         ],
-         "plotType":"SPLINE",
-         "rollup":"NONE",
-         "unit":"°",
-         "simplifyType":"NONE",
-         "chartColour":"black",
-         "chartRenderer":{
-            "type":"IMAGE",
-            "timePeriodType":"DAYS",
-            "numberOfPeriods":1
-         },
-         "dataSourceXid":"DS_numeroEstacion_PROM_15",
-         "defaultCacheSize":1,
-         "deviceName":"nombreEstacion - Promedio 15",
-	"discardExtremeValues":false,
-         "discardHighLimit":1.7976931348623157E308,
-         "discardLowLimit":-1.7976931348623157E308,
-         "intervalLoggingPeriod":1,
-         "intervalLoggingSampleWindowSize":0,
-         "overrideIntervalLoggingSamples":false,
-         "preventSetExtremeValues":false,
-         "purgeOverride":false,
-         "purgePeriod":1,
-         "readPermission":null,
-         "setExtremeHighLimit":1.7976931348623157E308,
-         "setExtremeLowLimit":-1.7976931348623157E308,
-         "setPermission":"",
-         "tags":{
-         },
-         "textRenderer":{
-            "type":"ANALOG",
-            "useUnitAsSuffix":true,
-            "unit":"°",
-            "renderedUnit":"°",
-            "format":"0.00"
-         },
-         "tolerance":0.0
-      },
-      {
-         "xid":"DP_numeroEstacion_P15_TA",
-         "name":"Temperatura Ambiental",
-         "enabled":true,
-         "loggingType":"ON_TS_CHANGE",
-         "intervalLoggingPeriodType":"MINUTES",
-         "intervalLoggingType":"AVERAGE",
-         "purgeType":"YEARS",
-         "pointLocator":{
-            "dataType":"NUMERIC",
-            "contextUpdate":false,
-            "settable":true,
-            "varName":"TA_15"
-         },
-         "eventDetectors":[
-         ],
-         "plotType":"SPLINE",
-         "rollup":"NONE",
-         "unit":"℃",
-         "simplifyType":"NONE",
-         "chartColour":"black",
-         "chartRenderer":{
-            "type":"IMAGE",
-            "timePeriodType":"DAYS",
-            "numberOfPeriods":1
-         },
-         "dataSourceXid":"DS_numeroEstacion_PROM_15",
-         "defaultCacheSize":1,
-         "deviceName":"nombreEstacion - Promedio 15",
-         "discardExtremeValues":false,
-         "discardHighLimit":1.7976931348623157E308,
-         "discardLowLimit":-1.7976931348623157E308,
-         "intervalLoggingPeriod":1,
-         "intervalLoggingSampleWindowSize":0,
-         "overrideIntervalLoggingSamples":false,
-         "preventSetExtremeValues":false,
-         "purgeOverride":false,
-         "purgePeriod":1,
-         "readPermission":"user",
-         "setExtremeHighLimit":1.7976931348623157E308,
-         "setExtremeLowLimit":-1.7976931348623157E308,
-         "setPermission":"",
-         "tags":{
-         },
-         "textRenderer":{
-            "type":"ANALOG",
-            "useUnitAsSuffix":true,
-            "unit":"℃",
-            "renderedUnit":"℃",
-            "format":"0.00"
-         },
-         "tolerance":0.0
-      },
-      {
-         "xid":"DP_numeroEstacion_P15_TI",
-         "name":"Temperatura Interior",
-         "enabled":false,
-         "loggingType":"ON_TS_CHANGE",
-         "intervalLoggingPeriodType":"MINUTES",
-         "intervalLoggingType":"AVERAGE",
-         "purgeType":"YEARS",
-         "pointLocator":{
-            "dataType":"NUMERIC",
-            "contextUpdate":false,
-            "settable":true,
-            "varName":"TI_15"
-         },
-         "eventDetectors":[
-         ],
-         "plotType":"SPLINE",
-         "rollup":"NONE",
-         "unit":"℃",
-         "simplifyType":"NONE",
-         "chartColour":"black",
-         "chartRenderer":{
-            "type":"IMAGE",
-            "timePeriodType":"DAYS",
-            "numberOfPeriods":1
-         },
-         "dataSourceXid":"DS_numeroEstacion_PROM_15",
-         "defaultCacheSize":1,
-         "deviceName":"nombreEstacion - Promedio 15",
-         "discardExtremeValues":false,
-         "discardHighLimit":1.7976931348623157E308,
-         "discardLowLimit":-1.7976931348623157E308,
-         "intervalLoggingPeriod":1,
-         "intervalLoggingSampleWindowSize":0,
-         "overrideIntervalLoggingSamples":false,
-         "preventSetExtremeValues":false,
-         "purgeOverride":false,
-         "purgePeriod":1,
-         "readPermission":"user",
-         "setExtremeHighLimit":1.7976931348623157E308,
-         "setExtremeLowLimit":-1.7976931348623157E308,
-         "setPermission":"",
-         "tags":{
-         },
-         "textRenderer":{
-            "type":"ANALOG",
-            "useUnitAsSuffix":true,
-            "unit":"℃",
-            "renderedUnit":"℃",
-            "format":"0.00"
-         },
-         "tolerance":0.0
-      },
-      {
-         "xid":"DP_numeroEstacion_P15_WD",
-         "name":"WD",
-         "enabled":true,
-         "loggingType":"ON_TS_CHANGE",
-         "intervalLoggingPeriodType":"MINUTES",
-         "intervalLoggingType":"AVERAGE",
-         "purgeType":"YEARS",
-         "pointLocator":{
-            "dataType":"NUMERIC",
-            "contextUpdate":false,
-            "settable":true,
-            "varName":"WD_15"
-         },
-         "eventDetectors":[
-         ],
-         "plotType":"SPLINE",
-         "rollup":"NONE",
-         "unit":"°",
-         "simplifyType":"NONE",
-         "chartColour":"black",
-         "chartRenderer":{
-            "type":"IMAGE",
-            "timePeriodType":"DAYS",
-            "numberOfPeriods":1
-         },
-         "dataSourceXid":"DS_numeroEstacion_PROM_15",
-         "defaultCacheSize":1,
-         "deviceName":"nombreEstacion - Promedio 15",
-         "discardExtremeValues":false,
-         "discardHighLimit":1.7976931348623157E308,
-         "discardLowLimit":-1.7976931348623157E308,
-         "intervalLoggingPeriod":1,
-         "intervalLoggingSampleWindowSize":0,
-         "overrideIntervalLoggingSamples":false,
-         "preventSetExtremeValues":false,
-         "purgeOverride":false,
-         "purgePeriod":1,
-         "readPermission":"user",
-         "setExtremeHighLimit":1.7976931348623157E308,
-         "setExtremeLowLimit":-1.7976931348623157E308,
-         "setPermission":"",
-         "tags":{
-         },
-         "textRenderer":{
-            "type":"ANALOG",
-            "useUnitAsSuffix":true,
-            "unit":"°",
-            "renderedUnit":"°",
-            "format":"0.00"
-         },
-         "tolerance":0.0
-      },
-      {
-         "xid":"DP_numeroEstacion_P15_WS",
-         "name":"WS",
-         "enabled":true,
-         "loggingType":"ON_TS_CHANGE",
-         "intervalLoggingPeriodType":"MINUTES",
-         "intervalLoggingType":"AVERAGE",
-         "purgeType":"YEARS",
-         "pointLocator":{
-            "dataType":"NUMERIC",
-            "contextUpdate":false,
-            "settable":true,
-            "varName":"WS_15"
-         },
-         "eventDetectors":[
-         ],
-         "plotType":"SPLINE",
-         "rollup":"NONE",
-         "unit":"m\/s",
-         "simplifyType":"NONE",
-         "chartColour":"black",
-         "chartRenderer":{
-            "type":"IMAGE",
-            "timePeriodType":"DAYS",
-            "numberOfPeriods":1
-         },
-         "dataSourceXid":"DS_numeroEstacion_PROM_15",
-         "defaultCacheSize":1,
-         "deviceName":"Parca - Promedio 15",
-         "discardExtremeValues":false,
-         "discardHighLimit":1.7976931348623157E308,
-         "discardLowLimit":-1.7976931348623157E308,
-         "intervalLoggingPeriod":1,
-         "intervalLoggingSampleWindowSize":0,
-         "overrideIntervalLoggingSamples":false,
-         "preventSetExtremeValues":false,
-         "purgeOverride":false,
-         "purgePeriod":1,
-         "readPermission":null,
-         "setExtremeHighLimit":1.7976931348623157E308,
-         "setExtremeLowLimit":-1.7976931348623157E308,
-         "setPermission":"",
-         "tags":{
-         },
-         "textRenderer":{
-            "type":"ANALOG",
-            "useUnitAsSuffix":true,
-            "unit":"m\/s",
-            "renderedUnit":"m\/s",
-            "format":"0.00"
-         },
-         "tolerance":0.0
-      }
-   ]
+        }
+    }
+}
+
+function formatearFecha(time) {
+    var tiempo = parseInt(time);
+    var tiempoDefault = new Date(tiempo);
+    tiempoDefault.setMinutes(tiempoDefault.getMinutes() - desfase);
+    return tiempoDefault;
 }
