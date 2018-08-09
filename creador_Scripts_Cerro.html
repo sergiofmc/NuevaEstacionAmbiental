@@ -5208,7 +5208,7 @@
                             "dataPointXid":"DP_{{numeroEstacion}}_15_WS",
                             "updateContext":false
                          },
-                         {
+                   {
                             "varName":"UVA",
                             "dataPointXid":"DP_{{numeroEstacion}}_15_UVA",
                             "updateContext":false
@@ -5228,7 +5228,7 @@
                             "dataPointXid":"DP_{{numeroEstacion}}_15_MPCO",
                             "updateContext":false
                          }
-                      ],
+                     ],
                       "logLevel":"NONE",
                       "cronPattern":"0 0\/5 * * * ?",
                       "executionDelaySeconds":0,
@@ -6132,7 +6132,7 @@
                       "dataSourceXid":"DS_{{numeroEstacion}}_PROM_15",
                       "defaultCacheSize":1,
                       "deviceName":"{{nombreEstacion}} - Promedio 15",
-                      "discardExtremeValues":false,
+               "discardExtremeValues":false,
                       "discardHighLimit":1.7976931348623157E308,
                       "discardLowLimit":-1.7976931348623157E308,
                       "intervalLoggingPeriod":1,
@@ -6141,7 +6141,7 @@
                       "preventSetExtremeValues":false,
                       "purgeOverride":false,
                       "purgePeriod":1,
-                      "readPermission":"user",
+                      "readPermission":null,
                       "setExtremeHighLimit":1.7976931348623157E308,
                       "setExtremeLowLimit":-1.7976931348623157E308,
                       "setPermission":"",
@@ -6343,7 +6343,7 @@
                       },
                       "dataSourceXid":"DS_{{numeroEstacion}}_PROM_15",
                       "defaultCacheSize":1,
-                      "deviceName":"{{nombreEstacion}} - Promedio 15",
+                      "deviceName":"Parca - Promedio 15",
                       "discardExtremeValues":false,
                       "discardHighLimit":1.7976931348623157E308,
                       "discardLowLimit":-1.7976931348623157E308,
@@ -6353,7 +6353,7 @@
                       "preventSetExtremeValues":false,
                       "purgeOverride":false,
                       "purgePeriod":1,
-                      "readPermission":"user",
+                      "readPermission":null,
                       "setExtremeHighLimit":1.7976931348623157E308,
                       "setExtremeLowLimit":-1.7976931348623157E308,
                       "setPermission":"",
@@ -6370,6 +6370,7 @@
                    }
                 ]
              }
+             
 </textarea>
 
             <textarea disabled ng-if="plantilla == 'Promedio Hora'">
