@@ -1,5 +1,5 @@
 var correrPromedio = false;
-var desfase = 15;
+var desfase = 1440;
 if (correrPromedio) desfase = desfase * 2;
 
 var valorCR = {};
@@ -48,111 +48,111 @@ tiempoCR.UVB = UVB.time;
 tiempoCR.EVAP = EVAP.time;
 tiempoCR.MPCO = MPCO.time;
 
-var valor15 = {};
-valor15.WS = WS_15.value;
-valor15.WD = WD_15.value;
-valor15.MP25 = MP25_15.value;
-valor15.MP10 = MP10_15.value;
-//valor15.MP1         = MP1_15.value;
-//valor15.MPTOTALES   = MPTOTALES_15.value;
-valor15.TA = TA_15.value;
-valor15.RH = RH_15.value;
-valor15.SIGMA = SIGMA_15.value;
-valor15.NIEVE = NIEVE_15.value;
-valor15.LLUVIA = LLUVIA_15.value;
-//valor15.MP10N       = MP10N_15.value;
-//valor15.MP25N       = MP25N_15.value;
-valor15.UV = UV_15.value;
-valor15.RSOLAR = RSOLAR_15.value;
-valor15.TI = TI_15.value;
-valor15.PRESION = PRESION_15.value;
-//valor15.UVA         = UVA_15.value;
-valor15.UVB = UVB_15.value;
-valor15.EVAP = EVAP_15.value;
-valor15.MPCO = MPCO_15.value;
+var valorDIA = {};
+valorDIA.WS = WS_DIA.value;
+valorDIA.WD = WD_DIA.value;
+valorDIA.MP25 = MP25_DIA.value;
+valorDIA.MP10 = MP10_DIA.value;
+//valorDIA.MP1         = MP1_DIA.value;
+//valorDIA.MPTOTALES   = MPTOTALES_DIA.value;
+valorDIA.TA = TA_DIA.value;
+valorDIA.RH = RH_DIA.value;
+valorDIA.SIGMA = SIGMA_DIA.value;
+valorDIA.NIEVE = NIEVE_DIA.value;
+valorDIA.LLUVIA = LLUVIA_DIA.value;
+//valorDIA.MP10N       = MP10N_DIA.value;
+//valorDIA.MP25N       = MP25N_DIA.value;
+valorDIA.UV = UV_DIA.value;
+valorDIA.RSOLAR = RSOLAR_DIA.value;
+valorDIA.TI = TI_DIA.value;
+valorDIA.PRESION = PRESION_DIA.value;
+//valorDIA.UVA         = UVA_DIA.value;
+valorDIA.UVB = UVB_DIA.value;
+valorDIA.EVAP = EVAP_DIA.value;
+valorDIA.MPCO = MPCO_DIA.value;
 
-var tiempo15 = {};
-tiempo15.WS = WS_15.time;
-tiempo15.WD = WD_15.time;
-tiempo15.MP25 = MP25_15.time;
-tiempo15.MP10 = MP10_15.time;
-//tiempo15.MP1         = MP1_15.time;
-//tiempo15.MPTOTALES   = MPTOTALES_15.time;
-tiempo15.TA = TA_15.time;
-tiempo15.RH = RH_15.time;
-tiempo15.SIGMA = SIGMA_15.time;
-tiempo15.NIEVE = NIEVE_15.time;
-tiempo15.LLUVIA = LLUVIA_15.time;
-//tiempo15.MP10N       = MP10N_15.time;
-//tiempo15.MP25N       = MP25N_15.time;
-tiempo15.UV = UV_15.time;
-tiempo15.RSOLAR = RSOLAR_15.time;
-tiempo15.TI = TI_15.time;
-tiempo15.PRESION = PRESION_15.time;
-//tiempo15.UVA         = UVA_15.time;
-tiempo15.UVB = UVB_15.time;
-tiempo15.EVAP = EVAP_15.time;
-tiempo15.MPCO = MPCO_15.time;
+var tiempoDIA = {};
+tiempoDIA.WS = WS_DIA.time;
+tiempoDIA.WD = WD_DIA.time;
+tiempoDIA.MP25 = MP25_DIA.time;
+tiempoDIA.MP10 = MP10_DIA.time;
+//tiempoDIA.MP1         = MP1_DIA.time;
+//tiempoDIA.MPTOTALES   = MPTOTALES_DIA.time;
+tiempoDIA.TA = TA_DIA.time;
+tiempoDIA.RH = RH_DIA.time;
+tiempoDIA.SIGMA = SIGMA_DIA.time;
+tiempoDIA.NIEVE = NIEVE_DIA.time;
+tiempoDIA.LLUVIA = LLUVIA_DIA.time;
+//tiempoDIA.MP10N       = MP10N_DIA.time;
+//tiempoDIA.MP25N       = MP25N_DIA.time;
+tiempoDIA.UV = UV_DIA.time;
+tiempoDIA.RSOLAR = RSOLAR_DIA.time;
+tiempoDIA.TI = TI_DIA.time;
+tiempoDIA.PRESION = PRESION_DIA.time;
+//tiempoDIA.UVA         = UVA_DIA.time;
+tiempoDIA.UVB = UVB_DIA.time;
+tiempoDIA.EVAP = EVAP_DIA.time;
+tiempoDIA.MPCO = MPCO_DIA.time;
 
-for (var concentracion in valor15) {
-    if (tiempo15[concentracion] == -1 && valor15[concentracion] === 0) {
+for (var concentracion in valorDIA) {
+    if (tiempoDIA[concentracion] == -1 && valorDIA[concentracion] === 0) {
         //print("No hay data");
         if (concentracion == 'WS') {
-            WS_15.set(9999, formatearFecha(WS.past(YEAR, 3).firstTime));
+            WS_DIA.set(9999, formatearFecha(WS.past(YEAR, 3).firstTime));
         } else if (concentracion == 'WD') {
-            WD_15.set(9999, formatearFecha(WD.past(YEAR, 3).firstTime));
+            WD_DIA.set(9999, formatearFecha(WD.past(YEAR, 3).firstTime));
         } else if (concentracion == 'MP25') {
-            MP25_15.set(9999, formatearFecha(MP25.past(YEAR, 3).firstTime));
+            MP25_DIA.set(9999, formatearFecha(MP25.past(YEAR, 3).firstTime));
         } else if (concentracion == 'MP10') {
-            MP10_15.set(9999, formatearFecha(MP10.past(YEAR, 3).firstTime));
+            MP10_DIA.set(9999, formatearFecha(MP10.past(YEAR, 3).firstTime));
         }
         /*else if(concentracion =='MP1') {            
-            MP1_15.set(9999,formatearFecha(MP1.past(YEAR,3).firstTime));
+            MP1_DIA.set(9999,formatearFecha(MP1.past(YEAR,3).firstTime));
         }
         else if(concentracion =='MPTOTALES') {            
-            MPTOTALES_15.set(9999,formatearFecha(MPTOTALES.past(YEAR,3).firstTime));
+            MPTOTALES_DIA.set(9999,formatearFecha(MPTOTALES.past(YEAR,3).firstTime));
         }*/
         else if (concentracion == 'RH') {
-            RH_15.set(9999, formatearFecha(RH.past(YEAR, 3).firstTime));
+            RH_DIA.set(9999, formatearFecha(RH.past(YEAR, 3).firstTime));
         } else if (concentracion == 'TA') {
-            TA_15.set(9999, formatearFecha(TA.past(YEAR, 3).firstTime));
+            TA_DIA.set(9999, formatearFecha(TA.past(YEAR, 3).firstTime));
         } else if (concentracion == 'SIGMA') {
-            SIGMA_15.set(9999, formatearFecha(SIGMA.past(YEAR, 3).firstTime));
+            SIGMA_DIA.set(9999, formatearFecha(SIGMA.past(YEAR, 3).firstTime));
         } else if (concentracion == 'NIEVE') {
-            NIEVE_15.set(9999, formatearFecha(NIEVE.past(YEAR, 3).firstTime));
+            NIEVE_DIA.set(9999, formatearFecha(NIEVE.past(YEAR, 3).firstTime));
         } else if (concentracion == 'LLUVIA') {
-            LLUVIA_15.set(9999, formatearFecha(LLUVIA.past(YEAR, 3).firstTime));
+            LLUVIA_DIA.set(9999, formatearFecha(LLUVIA.past(YEAR, 3).firstTime));
         }
         /*else if(concentracion =='MP10N') {
-            MP10N_15.set(9999,formatearFecha(MP10N.past(YEAR,3).firstTime));
+            MP10N_DIA.set(9999,formatearFecha(MP10N.past(YEAR,3).firstTime));
         }
         else if(concentracion =='MP25N') {            
-            MP25N_15.set(9999,formatearFecha(MP25N.past(YEAR,3).firstTime));
+            MP25N_DIA.set(9999,formatearFecha(MP25N.past(YEAR,3).firstTime));
         }*/
         else if (concentracion == 'UV') {
-            UV_15.set(9999, formatearFecha(UV.past(YEAR, 3).firstTime));
+            UV_DIA.set(9999, formatearFecha(UV.past(YEAR, 3).firstTime));
         }
         /*else if(concentracion =='UVA') {            
-            UVA_15.set(9999,formatearFecha(UVA.past(YEAR,3).firstTime));
+            UVA_DIA.set(9999,formatearFecha(UVA.past(YEAR,3).firstTime));
         }*/
         else if (concentracion == 'UVB') {
-            UVB_15.set(9999, formatearFecha(UVB.past(YEAR, 3).firstTime));
+            UVB_DIA.set(9999, formatearFecha(UVB.past(YEAR, 3).firstTime));
         } else if (concentracion == 'EVAP') {
-            EVAP_15.set(9999, formatearFecha(EVAP.past(YEAR, 3).firstTime));
+            EVAP_DIA.set(9999, formatearFecha(EVAP.past(YEAR, 3).firstTime));
         } else if (concentracion == 'MPCO') {
-            MPCO_15.set(9999, formatearFecha(MPCO.past(YEAR, 3).firstTime));
+            MPCO_DIA.set(9999, formatearFecha(MPCO.past(YEAR, 3).firstTime));
         } else if (concentracion == 'RSOLAR') {
-            RSOLAR_15.set(9999, formatearFecha(RSOLAR.past(YEAR, 3).firstTime));
+            RSOLAR_DIA.set(9999, formatearFecha(RSOLAR.past(YEAR, 3).firstTime));
         } else if (concentracion == 'PRESION') {
-            PRESION_15.set(9999, formatearFecha(PRESION.past(YEAR, 3).firstTime));
+            PRESION_DIA.set(9999, formatearFecha(PRESION.past(YEAR, 3).firstTime));
         } else if (concentracion == 'TI') {
-            TI_15.set(9999, formatearFecha(TI.past(YEAR, 3).firstTime));
+            TI_DIA.set(9999, formatearFecha(TI.past(YEAR, 3).firstTime));
         }
     } else {
-        var ultimoPromedio = parseInt(tiempo15[concentracion]);
+        var ultimoPromedio = parseInt(tiempoDIA[concentracion]);
         var timestamp = parseInt(tiempoCR[concentracion]);
         var diferenciaBloque = Math.abs(parseInt(((timestamp - ultimoPromedio) / 1000) / 60));
-        var vueltas = parseInt((diferenciaBloque) / 30);
+        var vueltas = parseInt((diferenciaBloque) / desfase);
 
 
         //print("ultimo Promedio dia: " + new Date(ultimoPromedio));
@@ -178,7 +178,7 @@ for (var concentracion in valor15) {
                 fin = fechaUltimoPromedio.setMinutes(fechaUltimoPromedio.getMinutes() + 2);
 
                 ultimoPromedio = new Date(ultimoPromedio);
-                ultimoPromedio = ultimoPromedio.setMinutes(ultimoPromedio.getMinutes() + 15);
+                ultimoPromedio = ultimoPromedio.setMinutes(ultimoPromedio.getMinutes() + 60);
 
                 //print("desde: " + new Date(principio));
                 //print("hasta: " + new Date(fin));
@@ -250,51 +250,51 @@ for (var concentracion in valor15) {
 
                 if (concentracion == 'WS') {
                     //print("concentracion " + concentracion);
-                    WS_15.set(promedio, ultimoPromedio);
+                    WS_DIA.set(promedio, ultimoPromedio);
                 } else if (concentracion == 'WD') {
-                    WD_15.set(promedio, ultimoPromedio);
+                    WD_DIA.set(promedio, ultimoPromedio);
                 } else if (concentracion == 'MP25') {
-                    MP25_15.set(promedio, ultimoPromedio);
+                    MP25_DIA.set(promedio, ultimoPromedio);
                 } else if (concentracion == 'MP10') {
-                    MP10_15.set(promedio, ultimoPromedio);
+                    MP10_DIA.set(promedio, ultimoPromedio);
                 }
                 /*else if(concentracion =='MP1') {            
-                    MP1_15.set(promedio,ultimoPromedio);
+                    MP1_DIA.set(promedio,ultimoPromedio);
                 }
                 else if(concentracion =='MPTOTALES') {            
-                    MPTOTALES_15.set(promedio,ultimoPromedio);
+                    MPTOTALES_DIA.set(promedio,ultimoPromedio);
                 }*/
                 else if (concentracion == 'RH') {
-                    RH_15.set(promedio, ultimoPromedio);
+                    RH_DIA.set(promedio, ultimoPromedio);
                 } else if (concentracion == 'TA') {
-                    TA_15.set(promedio, ultimoPromedio);
+                    TA_DIA.set(promedio, ultimoPromedio);
                 } else if (concentracion == 'SIG') {
-                    SIGMA_15.set(promedio, ultimoPromedio);
+                    SIGMA_DIA.set(promedio, ultimoPromedio);
                 }
                 /*else if(concentracion =='MP10N') {            
-                    MP10N_15.set(promedio,ultimoPromedioScript);
+                    MP10N_DIA.set(promedio,ultimoPromedioScript);
                 }
                 else if(concentracion =='MP25N') {            
-                    MP25N_15.set(promedio,ultimoPromedioScript);
+                    MP25N_DIA.set(promedio,ultimoPromedioScript);
                 }*/
                 else if (concentracion == 'UV') {
-                    UV_15.set(promedio, ultimoPromedioScript);
+                    UV_DIA.set(promedio, ultimoPromedioScript);
                 } else if (concentracion == 'RSOLAR') {
-                    RSOLAR_15.set(promedio, ultimoPromedioScript);
+                    RSOLAR_DIA.set(promedio, ultimoPromedioScript);
                 } else if (concentracion == 'TI') {
-                    TI_15.set(promedio, ultimoPromedioScript);
+                    TI_DIA.set(promedio, ultimoPromedioScript);
                 } else if (concentracion == 'PRESION') {
-                    PRESION_15.set(promedio, ultimoPromedioScript);
+                    PRESION_DIA.set(promedio, ultimoPromedioScript);
                 }
                 /*else if(concentracion =='UVA') {            
-                    UVA_15.set(promedio,ultimoPromedio);
+                    UVA_DIA.set(promedio,ultimoPromedio);
                 }*/
                 else if (concentracion == 'UVB') {
-                    UVB_15.set(promedio, ultimoPromedio);
+                    UVB_DIA.set(promedio, ultimoPromedio);
                 } else if (concentracion == 'EVAP') {
-                    EVAP_15.set(promedio, ultimoPromedio);
+                    EVAP_DIA.set(promedio, ultimoPromedio);
                 } else if (concentracion == 'MPCO') {
-                    MPCO_15.set(promedio, ultimoPromedio);
+                    MPCO_DIA.set(promedio, ultimoPromedio);
                 }
 
 
